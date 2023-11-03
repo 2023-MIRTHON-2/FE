@@ -1,3 +1,5 @@
+import { Link } from "../../node_modules/react-router-dom/dist/index";
+
 export default function Header() {
   return (
     <header className="w-1/1 py-1 px-20 lg:px-60 flex justify-between items-center shadow-md">
@@ -9,8 +11,10 @@ export default function Header() {
         />
       </div>
       <div>
-        <button className="mr-10">공유공간 찾기</button>
-        <button className="">로그인</button>
+        <button className="mr-10">
+          <Link to="places">공유공간 찾기</Link>
+        </button>
+        <button>로그인</button>
       </div>
     </header>
   );
