@@ -6,11 +6,12 @@ import {
 } from "../node_modules/react-router-dom/dist/index";
 import App from "./App.tsx";
 import "./main.css";
+import MainPage from "./pages/MainPage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <MainPage />,
   },
 ]);
 
