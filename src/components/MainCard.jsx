@@ -1,11 +1,11 @@
-interface MainCardProps {
-  location: string;
-  category: string;
-  title: string;
-  subTitle: string;
-  price: string;
-  src: string;
-}
+// interface MainCardProps {
+//   location: string;
+//   category: string;
+//   title: string;
+//   subTitle: string;
+//   price: string;
+//   src: string;
+// }
 
 export default function MainCard({
   location,
@@ -14,7 +14,7 @@ export default function MainCard({
   subTitle,
   price,
   src,
-}: MainCardProps) {
+}) {
   return (
     <li className="max-w-fit border-[1px] border-[#11434A] rounded-lg card-skew">
       <img className="image-quality-improve " src={src} alt="공유공간 카드" />

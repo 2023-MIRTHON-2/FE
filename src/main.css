@@ -13,6 +13,14 @@
   transform: rotate(180deg);
 } */
 
+:root {
+  --deep-green-color: #042226;
+  --normal-green-color: #11444a;
+  --light-green-color: #b6d8dd;
+  --deep-red-color: #db1a00;
+  --normal-red-color: #ff6550;
+  --light-red-color: #ffcac3;
+}
 .image-quality-improve {
   image-rendering: -moz-crisp-edges; /* firefox */
   image-rendering: -o-crisp-edges; /* opera */
