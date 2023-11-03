@@ -1,13 +1,13 @@
-import { useState } from "react";
+import "./index.css";
 
-import { Link, NavLink } from "../node_modules/react-router-dom/dist/index";
 function App() {
   return (
     <>
-      <header>
+      <header class="w-full justify-between ">
         <img src="src/img/header-logo.png" />
-        <button>공유공간 찾기</button>
+        <button class="text-9xl">공유공간 찾기</button>
         <button>로그인</button>
+        <h1 class="text-">hi</h1>
       </header>
     </>
   );

@@ -5,7 +5,6 @@ import {
   RouterProvider,
 } from "../node_modules/react-router-dom/dist/index";
 import App from "./App.tsx";
-import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
