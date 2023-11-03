@@ -1,12 +1,3 @@
-// interface MainCardProps {
-//   location: string;
-//   category: string;
-//   title: string;
-//   subTitle: string;
-//   price: string;
-//   src: string;
-// }
-
 export default function MainCard({
   location,
   category,

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MainCard from "../components/MainCard";
+import { IMG_PATH, JSON_PATH } from "../constants/path";
 
 export default function MainPage() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    fetch("public/data/place-card.json")
+    fetch(JSON_PATH.CARDS)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
@@ -29,7 +30,7 @@ export default function MainPage() {
             </h1>
             <img
               className="main-logo-rotate-animation"
-              src="src/img/main-logo.png"
+              src={IMG_PATH.MAIN_LOGO}
               alt="메인 로고"
             />
           </div>
