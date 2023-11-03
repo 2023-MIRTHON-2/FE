@@ -3,10 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      calc: {
-        customHalf: "calc(50 % -212)",
-      },
+      "signiture-red": "FF6550",
     },
+    mode: "jit",
   },
   plugins: [],
 };

@@ -2,9 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-.main-logo-half-translate {
+/* .main-logo-half-translate {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-212px, 0%);
+  transition: 1s;
+}
+.main-logo-half-translate:hover {
+  transform: rotate(180deg);
+} */
+
+.main-logo-rotate-animation {
+  transition: 1s ease-in-out;
+}
+.main-logo-rotate-animation:hover {
+  transform: rotate(180deg);
 }
