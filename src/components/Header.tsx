@@ -3,7 +3,10 @@ import { IMG_PATH } from "../constants/path";
 
 export default function Header() {
   return (
-    <header className="w-1/1 py-1 px-20 lg:px-60 flex justify-between items-center shadow-md bg-white">
+    <header
+      className="w-1/1 py-1 px-20 lg:px-60 flex justify-between items-center shadow-md bg-white"
+      style={{ height: "var(--height-header)" }}
+    >
       <div>
         <img
           className="image-quality-improve"
