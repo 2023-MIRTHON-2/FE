@@ -14,7 +14,7 @@ export default function MainPage() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <main className="min-w-full min-h-screen flex-row px-20 lg:px-60">
         <section className="min-w-full min-h-max py-32">
           <div className="text-3xl font-bold">
