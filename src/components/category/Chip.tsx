@@ -1,16 +1,21 @@
-// import React from "react";
-
 interface props {
   color: "red" | "green";
+  size: "small" | "normal";
   chipInfo: string;
   isPicked: boolean;
   onClickEvent: (chipInfo: string) => void;
 }
 
-const Chip = ({ color, chipInfo, isPicked, onClickEvent }: props) => {
+const Chip = ({
+  color,
+  size = "normal",
+  chipInfo,
+  isPicked,
+  onClickEvent,
+}: props) => {
   return (
     <div
-      className={`flex justify-center items-center p-2 min-w-[5.875rem] rounded-xl border border-solid cursor-pointer font-semibold ${
+      className={`flex justify-center items-center border border-solid cursor-pointer font-semibold ${
         color === "red"
           ? "border-my-red text-my-red"
           : "border-my-green text-my-green"
@@ -22,6 +27,11 @@ const Chip = ({ color, chipInfo, isPicked, onClickEvent }: props) => {
           : isPicked
           ? "bg-my-light-green"
           : "bg-white"
+      }
+      ${
+        size === "small"
+          ? "w-fit min-w-fit text-xs px-5 py-1 rounded-lg"
+          : "min-w-[5.875rem] p-2 rounded-xl"
       }`}
       onClick={() => onClickEvent(chipInfo)}
     >
