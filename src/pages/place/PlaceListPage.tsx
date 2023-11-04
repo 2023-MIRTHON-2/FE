@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FilteringSection from "../../components/category/FilteringSection";
 import BaisicButton from "../../components/button/BaisicButton";
 
 const PlaceListPage = () => {
   const [filterBusinessList, setFilterBusinessList] = useState<string[]>([]);
   const [filterLocationList, setFilterLocationList] = useState<string[]>([]);
-  const [placeList, setPlaceList] = useState([]);
+  // const [placeList, setPlaceList] = useState([]);
+  filterBusinessList;
+  filterLocationList;
 
   return (
     <article className={`flex justify-center flex-col items-center`}>
