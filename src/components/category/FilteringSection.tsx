@@ -2,7 +2,7 @@ import ChipWrap from "./ChipWrap";
 
 interface props {
   type: "business" | "location";
-  onClickEvent: () => void;
+  onClickEvent: (pickedList: string[]) => void;
 }
 
 const businessList = ["전체", "요식업", "주점", "제조업", "도소매"];
@@ -14,11 +14,11 @@ const FilteringSection = ({ type, onClickEvent }: props) => {
     <section className={`flex flex-col items-center`}>
       <div className={`flex flex-col items-center gap-[1.9375rem]`}>
         <div
-          className={` font-bold ${
+          className={`font-semibold text-lg ${
             type === "business" ? "text-my-red" : "text-my-green"
           }`}
         >
-          {type === "business" ? "업종" : "위치"}
+          {type === "business" ? "업종" : "사업장 위치"}
         </div>
         <ChipWrap
           filteringList={filteringList}
