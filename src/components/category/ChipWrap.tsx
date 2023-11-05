@@ -4,10 +4,16 @@ import Chip from "./Chip";
 interface props {
   filteringList: string[];
   type: "business" | "location";
+  allPicked?: boolean;
   pickEvent?: (pickedList: string[]) => void;
 }
 
-const ChipWrap = ({ filteringList, type, pickEvent }: props) => {
+const ChipWrap = ({
+  filteringList,
+  type,
+  allPicked = false,
+  pickEvent,
+}: props) => {
   const [picked, setPicked] = useState<string[]>(["전체"]);
 
   const clickChipEvent = (currentChip: string) => {
@@ -47,7 +53,7 @@ const ChipWrap = ({ filteringList, type, pickEvent }: props) => {
         <Chip
           color={type === "business" ? "red" : "green"}
           chipInfo={category}
-          isPicked={picked.includes(category)}
+          isPicked={allPicked ? allPicked : picked.includes(category)}
           onClickEvent={clickChipEvent}
         ></Chip>
       ))}

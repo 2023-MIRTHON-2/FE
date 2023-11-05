@@ -7,13 +7,14 @@ import BaisicButton from "../../components/button/BaisicButton";
 
 const PlaceDetailPage = () => {
   const navigate = useNavigate();
-  const palce = {
+  const place = {
     imgs: ["/"],
     desc: "소개를 해보겠습니다.",
     business: convertCategoryList("business", ["food"], "KOR"),
-    location: convertCategoryList("location", ["shinchon"], "KOR"),
+    location: convertCategoryList("location", ["shinChon"], "KOR"),
     pay: 10000,
   };
+  console.log(place.location);
   return (
     <article className={``}>
       <section
@@ -40,7 +41,7 @@ const PlaceDetailPage = () => {
           <div className={`flex gap-4`}>
             {[0, 1, 2, 3].map((imgIndex) => (
               <div className={`w-32 h-32  rounded-2xl bg-gray-300`}>
-                {palce.imgs[imgIndex] ? palce.imgs[imgIndex] : "ㅎㅎ"}
+                {place.imgs[imgIndex] ? place.imgs[imgIndex] : "ㅎㅎ"}
               </div>
             ))}
           </div>
@@ -51,27 +52,29 @@ const PlaceDetailPage = () => {
             className={`rounded-xl w-full h-[11rem] p-4`}
             style={{ boxShadow: "0px 0px 12px 0px rgba(0, 0, 0, 0.25)" }}
           >
-            {palce.desc}
+            {place.desc}
           </div>
           <div className={`flex items-center gap-[2.75rem]`}>
             <div className={`font-bold text-2xl`}>업종</div>
             <ChipWrap
-              filteringList={palce.business}
+              filteringList={place.business}
               type={"business"}
+              allPicked={true}
             ></ChipWrap>
           </div>
           <div className={`flex items-center gap-[2.75rem]`}>
             <div className={`font-bold text-2xl`}>지역</div>
             <ChipWrap
-              filteringList={palce.location}
+              filteringList={place.location}
               type={"location"}
+              allPicked={true}
             ></ChipWrap>
           </div>
           <div className={`w-full flex justify-between`}>
             <div className={`font-bold text-2xl`}>월 임대료</div>
             <div className={`flex gap-2 items-baseline pt-8`}>
               <span className={`text-xl`}>월</span>
-              <span className={`font-bold text-2xl`}>{palce.pay}</span>
+              <span className={`font-bold text-2xl`}>{place.pay}</span>
               <span className={`text-xl`}>원</span>
             </div>
           </div>
