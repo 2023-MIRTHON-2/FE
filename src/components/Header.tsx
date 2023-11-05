@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IMG_PATH } from "../constants/path";
+import { logo } from "../assets/images";
 
 export default function Header() {
   return (
@@ -11,7 +11,7 @@ export default function Header() {
         <Link to="/">
           <img
             className="image-quality-improve"
-            src={`/${IMG_PATH.HEADER_LOGO}`}
+            src={logo.header}
             alt="바로여기 로고"
           />
         </Link>

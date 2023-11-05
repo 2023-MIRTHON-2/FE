@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="footer px-[10%] py-[8%]">
+    <footer
+      className="footer px-[10%]"
+      style={{ height: "var(--height-footer)" }}
+    >
       <div className="relative">
         <div className="text-white">
-          <h1 className="font-light text-2xl">TEAM_GANZI YONG</h1>
+          <h1 className="mt-10 font-light text-2xl">TEAM_GANZI YONG</h1>
           <p className="mt-8">
             <span>back-end</span>
             <span className="ml-16 font-light">구혜승 이주형</span>

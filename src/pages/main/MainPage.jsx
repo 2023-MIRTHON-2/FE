@@ -4,7 +4,8 @@ import Header from "../../components/Header";
 import MainCard from "../../components/MainCard";
 import ScrollOut from "scroll-out";
 
-import { IMG_PATH, JSON_PATH } from "../../constants/path";
+import { JSON_PATH } from "../../constants/path";
+import { logo, mainImg } from "../../assets/images";
 
 export default function MainPage() {
   const [data, setData] = useState();
@@ -29,17 +30,13 @@ export default function MainPage() {
             <h1 className="ml-20 mt-5">함께 성장하세요</h1>
           </div>
           <div className="mt-10 relative flex justify-center items-center">
-            <h1 className="absolute top-[calc(50%-100px)] left-[calc(50%-160px)] text-5xl font-bold text-[#11434A]">
+            <h1 className="absolute top-[calc(50%-100px)] left-[calc(50%-160px)] text-5xl font-bold text-my-green">
               Open
             </h1>
             <h1 className="absolute top-[calc(50%+50px)] left-[calc(50%+60px)] text-5xl font-bold text-[#DE6655]">
               Close
             </h1>
-            <img
-              className="main-logo"
-              src={IMG_PATH.MAIN_LOGO}
-              alt="메인 로고"
-            />
+            <img className="main-logo" src={logo.main} alt="메인 로고" />
           </div>
           <div className="mt-12 px-10 flex flex-col items-end font-bold text-3xl ">
             <h1 className="mr-20">
@@ -91,21 +88,21 @@ export default function MainPage() {
                 <img
                   data-scroll
                   className="w-[580px] lg:w-[680px]"
-                  src="src/assets/main-interview-1.png"
+                  src={mainImg.interview1}
                 />
               </div>
               <div className="flex justify-end my-10">
                 <img
                   data-scroll
                   className=" w-[580px] lg:w-[680px]"
-                  src="src/assets/main-interview-2.png"
+                  src={mainImg.interview2}
                 />
               </div>
               <div className="flex justify-start">
                 <img
                   data-scroll
                   className=" w-[580px] lg:w-[680px]"
-                  src="src/assets/main-interview-3.png"
+                  src={mainImg.interview3}
                 />
               </div>
             </div>
@@ -113,10 +110,7 @@ export default function MainPage() {
         </section>
         <section className="py-32">
           <div className="ml-10 flex items-end">
-            <img
-              className="w-[300px]"
-              src="src/assets/main/main-provider-logo.png"
-            />
+            <img className="w-[300px]" src={mainImg.provider} />
             <h1 className="ml-5 mb-10 text-3xl font-semiboldtext-my-green">
               <h1 className="mb-1">사업자는</h1>
               <span className="font-extrabold">바로 여기</span>
@@ -135,10 +129,7 @@ export default function MainPage() {
             </p>
           </div>
           <div className="mt-24 mr-10 flex items-end justify-end">
-            <img
-              className="w-[300px]"
-              src="src/assets/main/main-user-logo.png"
-            />
+            <img className="w-[300px]" src={mainImg.user} />
             <h1 className="ml-5 mb-10 text-3xl font-semiboldtext-my-deep-red">
               <h1 className="mb-1">이용자는</h1>
               <span className="font-extrabold">바로 여기</span>
@@ -162,24 +153,23 @@ export default function MainPage() {
         </section>
         <section className="py-32">
           <div className="mb-10 ">
-            <h1 className="text-2xl font-semibold text-center tracking-wide">
+            <h1 className="mb-32 text-2xl font-semibold text-center tracking-wide">
               <span className="font-extrabold">지속 가능한 미래</span>
               <span className="">를 위해서</span>
               <span className="ml-2 text-[28px] text-[#11434A]">바로 여기</span>
             </h1>
-            <div className="flex flex-col">
-              <img src="src/assets/main/esg/environment.png" />
-              <p className="px-10 py-12 mt-10 font-medium border-2 border-[#0B733A] rounded-3xl tracking-wide">
+            <div className="mflex flex-col">
+              <img src={mainImg.environment} />
+              <p className="px-10 py-12 mt-10 font-medium border-2 border-my-tree rounded-3xl tracking-wide">
                 <h1 className="relative left-4 bottom-16 w-[60%] bg-white">
                   <h1 data-scroll className="esg text-2xl font-bold ml-10">
                     바로 여기로 지키는{" "}
-                    <span className="text-[#0B733A]">환경</span>
+                    <span className="text-my-tree">환경</span>
                   </h1>
                 </h1>
                 <article data-scroll>
                   <p>
-                    자영업의{" "}
-                    <span className="text-[#0B733A]">폐업률은 80%</span>
+                    자영업의 <span className="text-my-tree">폐업률은 80%</span>
                     입니다. 많은 사업의 도전과 폐업이 반복되면서 발생하는
                     자원낭비를 막을 수 있습니다.
                   </p>
@@ -187,21 +177,21 @@ export default function MainPage() {
                     무모하게 시작한 사업은 폐업을 할 가능성이 높습니다.
                     <br />
                     가게의 인테리어, 가구, 조리 기구, 기계, 가전제품은{" "}
-                    <span className="text-[#0B733A]">
+                    <span className="text-my-tree">
                       폐업과 동시에 버려지고 반복되는 자원 낭비가 발생
                     </span>
                     합니다.
                   </p>
                   <p className="mt-5">
                     가게를 대여해서
-                    <span className="text-[#0B733A]">
+                    <span className="text-my-tree">
                       {" "}
                       자신의 사업 아이템의 반응을 확인
                     </span>
                     하고
-                    <span className="text-[#0B733A]"> 창업에 신중한 결정</span>
-                    을 해볼 수 있습니다. 바로 여기를 통한{" "}
-                    <span className="text-[#0B733A]">
+                    <span className="text-my-tree"> 창업에 신중한 결정</span>을
+                    해볼 수 있습니다. 바로 여기를 통한{" "}
+                    <span className="text-my-tree">
                       예비 창업은 폐업률을 감소시켜 불필요한 창업 자원의 낭비를
                       줄입니다.
                     </span>
@@ -212,7 +202,7 @@ export default function MainPage() {
           </div>
           <div className="mb-10">
             <div className="flex flex-col">
-              <img src="src/assets/main/esg/economic.png" />
+              <img src={mainImg.economic} />
               <p className="px-10 py-10 mt-10 font-medium border-2 border-my-yellow rounded-3xl tracking-wide">
                 <h1 className="relative left-4 bottom-14 w-[60%] bg-white">
                   <h1 data-scroll className="text-2xl font-bold ml-10 esg">
@@ -247,7 +237,7 @@ export default function MainPage() {
           </div>
           <div className="mb-10">
             <div className="flex flex-col">
-              <img src="src/assets/main/esg/social.png" />
+              <img src={mainImg.social} />
               <p className="px-10 py-10 mt-10 font-medium border-2 border-my-purple rounded-3xl tracking-wide">
                 <h1 className="relative left-4 bottom-14 w-[60%] bg-white">
                   <h1 data-scroll className="text-2xl font-bold ml-10 esg">
@@ -282,7 +272,7 @@ export default function MainPage() {
         </section>
         <section className="py-16">
           <div data-scroll className="flex flex-col items-center">
-            <img src="src/assets/main/store.png" />
+            <img src={logo.store} />
             <h1 className="my-20 text-2xl font-light">
               내가 원하는 공유공간 계약 서비스
             </h1>
