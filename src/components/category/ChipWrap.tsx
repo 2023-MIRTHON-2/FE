@@ -4,7 +4,7 @@ import Chip from "./Chip";
 interface props {
   filteringList: string[];
   type: "business" | "location";
-  pickEvent: (pickedList: string[]) => void;
+  pickEvent?: (pickedList: string[]) => void;
 }
 
 const ChipWrap = ({ filteringList, type, pickEvent }: props) => {
@@ -38,7 +38,7 @@ const ChipWrap = ({ filteringList, type, pickEvent }: props) => {
   };
 
   useEffect(() => {
-    pickEvent(picked);
+    pickEvent && pickEvent(picked);
   }, [picked]);
 
   return (
