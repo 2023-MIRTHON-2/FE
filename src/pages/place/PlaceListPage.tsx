@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import FilteringSection from "../../components/category/FilteringSection";
 import BaisicButton from "../../components/button/BaisicButton";
 
 const PlaceListPage = () => {
   const [filterBusinessList, setFilterBusinessList] = useState<string[]>([]);
   const [filterLocationList, setFilterLocationList] = useState<string[]>([]);
-  // const [placeList, setPlaceList] = useState([]);
-  filterBusinessList;
-  filterLocationList;
+  const [placeList, setPlaceList] = useState([]);
+
+  const getPlaceList = useCallback(() => {
+    setPlaceList([]);
+  }, [filterBusinessList, filterLocationList]);
+
+  useEffect(() => {
+    getPlaceList();
+  }, [filterBusinessList, filterLocationList]);
 
   return (
     <article className={`flex justify-center flex-col items-center`}>
@@ -41,7 +47,11 @@ const PlaceListPage = () => {
           onClickEvent={() => console.log("hi")}
         ></BaisicButton>
       </section>
-      <section>list</section>
+      <section>
+        {placeList.map((place) => (
+          <div>hi</div>
+        ))}
+      </section>
     </article>
   );
 };

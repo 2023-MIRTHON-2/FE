@@ -1,9 +1,9 @@
 interface props {
   color: "red" | "green";
-  size: "small" | "normal";
+  size?: "small" | "normal";
   chipInfo: string;
   isPicked: boolean;
-  onClickEvent: (chipInfo: string) => void;
+  onClickEvent?: (chipInfo: string) => void;
 }
 
 const Chip = ({
@@ -33,7 +33,7 @@ const Chip = ({
           ? "w-fit min-w-fit text-xs px-5 py-1 rounded-lg"
           : "min-w-[5.875rem] p-2 rounded-xl"
       }`}
-      onClick={() => onClickEvent(chipInfo)}
+      onClick={() => onClickEvent && onClickEvent(chipInfo)}
     >
       {chipInfo}
     </div>
