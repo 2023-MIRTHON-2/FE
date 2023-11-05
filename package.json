@@ -23,6 +23,7 @@
     "scroll": "^3.0.1",
     "scroll-out": "^2.2.12",
     "sort-by": "^1.2.0",
+    "swiper": "^11.0.3",
     "typeit-react": "^2.6.4"
   },
   "devDependencies": {

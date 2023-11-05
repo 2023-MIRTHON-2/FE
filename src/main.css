@@ -1,21 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* .main-logo-half-translate {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-212px, 0%);
-  transition: 1s;
-}
-.main-logo-half-translate:hover {
-  transform: rotate(180deg);
-} */
+
 body::-webkit-scrollbar {
   display: none;
 }
 body {
   position: relative;
+  /* height: 100%; */
 }
 
 :root {
@@ -66,10 +58,6 @@ img {
   animation: rotate180 1s forwards ease-in-out;
   animation-delay: 1.5s;
 }
-/* [class="main-logo"] {
-  animation: rotate180 1.5s forwards;
-  animation-delay: 1s;
-} */
 
 .sec-title[data-scroll] {
   transition-delay: 0.8s;
@@ -83,46 +71,6 @@ img {
 
 .esg[data-scroll] {
   transition-delay: 0.3s;
-}
-
-@keyframes fillColor {
-  0% {
-    background-color: white;
-  }
-  20% {
-    background: rgb(17, 67, 74);
-    background: linear-gradient(
-      90deg,
-      rgba(17, 67, 74, 1) 0%,
-      rgba(255, 255, 255, 1) 9%
-    );
-  }
-  40% {
-    background: rgb(17, 67, 74);
-    background: linear-gradient(
-      90deg,
-      rgba(17, 67, 74, 1) 0%,
-      rgba(255, 255, 255, 1) 48%
-    );
-  }
-  80% {
-    background: rgb(17, 67, 74);
-    background: linear-gradient(
-      90deg,
-      rgba(17, 67, 74, 1) 0%,
-      rgba(222, 102, 85, 1) 62%,
-      rgba(255, 255, 255, 1) 84%
-    );
-  }
-  100% {
-    background: rgb(17, 67, 74);
-    background: linear-gradient(
-      90deg,
-      rgba(17, 67, 74, 1) 0%,
-      rgba(21, 81, 89, 1) 27%,
-      rgba(222, 102, 85, 1) 100%
-    );
-  }
 }
 
 .last-main-btn {
