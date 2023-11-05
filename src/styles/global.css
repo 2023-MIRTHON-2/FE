@@ -1,0 +1,11 @@
+:root {
+  --height-header: 6rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.basic-boder-bottom {
+  border-bottom: 1px solid #9a9a9a;
+}
