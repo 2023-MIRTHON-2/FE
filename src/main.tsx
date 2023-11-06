@@ -4,7 +4,7 @@ import {
   RouterProvider,
 } from "../node_modules/react-router-dom/dist/index";
 import "./main.css";
-import MainPage from "./pages/MainPage";
+import MainPage from "./pages/main/MainPage";
 import Places from "./pages/Places";
 import PlaceListPage from "./pages/place/PlaceListPage";
 import Layout from "./components/Layout";
