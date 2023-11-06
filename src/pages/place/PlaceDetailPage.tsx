@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ChipWrap from "../../components/category/ChipWrap";
 import { convertCategoryList } from "../../assets/functions/place";
 import BaisicButton from "../../components/button/BaisicButton";
+import BasicCalendar from "../../components/BasicCalendar";
 
 const PlaceDetailPage = () => {
   const navigate = useNavigate();
@@ -88,7 +89,15 @@ const PlaceDetailPage = () => {
           </div>
         </div>
       </section>
-      <section>달력</section>
+
+      <section
+        className={`flex flex-col justify-center items-center px-3 py-5`}
+      >
+        <div className={`flex w-full font-semibold text-3xl text-my-green`}>
+          계약 가능한 일정
+        </div>
+        <BasicCalendar disabledDates={[]}></BasicCalendar>
+      </section>
     </article>
   );
 };
