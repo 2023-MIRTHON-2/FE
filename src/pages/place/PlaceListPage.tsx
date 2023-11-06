@@ -1,13 +1,50 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import FilteringSection from "../../components/category/FilteringSection";
 import BaisicButton from "../../components/button/BaisicButton";
+// import { getPlaceListApi } from "../../assets/api/place";
+import MainCard from "../../components/MainCard";
+import { PlaceInfoType } from "../../assets/type";
 
 const PlaceListPage = () => {
   const [filterBusinessList, setFilterBusinessList] = useState<string[]>([]);
   const [filterLocationList, setFilterLocationList] = useState<string[]>([]);
-  // const [placeList, setPlaceList] = useState([]);
-  filterBusinessList;
-  filterLocationList;
+  const [placeList, setPlaceList] = useState<PlaceInfoType[]>([]);
+
+  const getPlaceList = useCallback(async () => {
+    // const response = await getPlaceListApi(
+    //   filterBusinessList.join(),
+    //   filterLocationList.join()
+    // );
+    // console.log(response, response.status);
+    // if (response.status === 200) {
+    //   // setPlaceList(response);
+    // }
+
+    setPlaceList([
+      {
+        id: 1,
+        placeName: "성수1-요식업1",
+        placeImageUrl: "default",
+        business: "요식업",
+        location: "성수",
+        article: "설명글1",
+        cost: 100000,
+      },
+      {
+        id: 2,
+        placeName: "성수1-요식업1",
+        placeImageUrl: "default",
+        business: "요식업",
+        location: "성수",
+        article: "설명글1",
+        cost: 100000,
+      },
+    ]);
+  }, [filterBusinessList, filterLocationList]);
+
+  useEffect(() => {
+    getPlaceList();
+  }, []);
 
   return (
     <article className={`flex justify-center flex-col items-center`}>
@@ -38,10 +75,25 @@ const PlaceListPage = () => {
           content={"조건 검색"}
           color={"green"}
           type={"button"}
-          onClickEvent={() => console.log("hi")}
+          onClickEvent={() => getPlaceList()}
         ></BaisicButton>
       </section>
-      <section>list</section>
+      <section className={`w-full py-[4rem] grid grid-cols-3`}>
+        {placeList.map((place) => (
+          <div className={`px-4`}>
+            <MainCard
+              key={place.id}
+              location={place.location}
+              category={place.business}
+              title={place.placeName}
+              subTitle={place.article}
+              price={place.cost}
+              src={place.placeImageUrl}
+              isBasicMode={true}
+            ></MainCard>
+          </div>
+        ))}
+      </section>
     </article>
   );
 };
