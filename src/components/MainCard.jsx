@@ -12,9 +12,16 @@ export default function MainCard({
 }) {
   return (
     <li
-      className={`max-w-fit border-[0.1px] border-[#11434A] rounded-lg ${
-        isBasicMode ? "" : "card-skew"
+      className={`border-[#11434A] rounded-lg ${
+        isBasicMode
+          ? "w-full max-w-[18.75rem]"
+          : "max-w-fit border-[0.1px] card-skew"
       }`}
+      style={{
+        boxShadow: `${
+          isBasicMode ? "0px 0px 4px 3px rgba(0, 0, 0, 0.25)" : ""
+        }`,
+      }}
     >
       <img className="image-quality-improve " src={src} alt="공유공간 카드" />
       <div className="px-5 py-6">

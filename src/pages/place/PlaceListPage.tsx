@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import FilteringSection from "../../components/category/FilteringSection";
 import BaisicButton from "../../components/button/BaisicButton";
-import { getPlaceListApi } from "../../assets/api/place";
+// import { getPlaceListApi } from "../../assets/api/place";
 import MainCard from "../../components/MainCard";
 import { PlaceInfoType } from "../../assets/type";
 
@@ -81,7 +81,7 @@ const PlaceListPage = () => {
       </section>
       <section className={`w-full py-[4rem] grid grid-cols-3`}>
         {placeList.map((place) => (
-          <div>
+          <div className={`px-4`}>
             <MainCard
               key={place.id}
               location={place.location}
