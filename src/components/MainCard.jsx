@@ -8,9 +8,14 @@ export default function MainCard({
   subTitle,
   price,
   src,
+  isBasicMode = false,
 }) {
   return (
-    <li className="max-w-fit border-[0.1px] border-[#11434A] rounded-lg card-skew">
+    <li
+      className={`max-w-fit border-[0.1px] border-[#11434A] rounded-lg ${
+        isBasicMode ? "" : "card-skew"
+      }`}
+    >
       <img className="image-quality-improve " src={src} alt="공유공간 카드" />
       <div className="px-5 py-6">
         <header className={`flex gap-1`}>
