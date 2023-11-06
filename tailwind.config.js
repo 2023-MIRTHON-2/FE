@@ -7,8 +7,12 @@ export default {
       colors: {
         "my-red": "#B3483A",
         "my-light-red": "#FFCAC3",
+        "my-deep-red": "#DE6655",
         "my-green": "#11434A",
         "my-light-green": "#B6D8DD",
+        "my-tree": "#0B733A",
+        "my-yellow": "#CD9300",
+        "my-purple": "#282085",
       },
     },
     mode: "jit",
