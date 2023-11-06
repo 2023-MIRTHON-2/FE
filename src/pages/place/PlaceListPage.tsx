@@ -43,7 +43,6 @@ const PlaceListPage = () => {
   }, [filterBusinessList, filterLocationList]);
 
   useEffect(() => {
-    console.log("UE hi");
     getPlaceList();
   }, []);
 
