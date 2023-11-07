@@ -41,7 +41,7 @@ img {
   opacity: 0;
   will-change: transform, scale, opacity;
   transform: translateY(6rem) scale(0.93);
-  transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition-delay: 0.5s;
 }
 
@@ -54,6 +54,9 @@ img {
   opacity: 0;
 }
 
+p[data-scroll] {
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 .main-logo {
   animation: rotate180 1s forwards ease-in-out;
   animation-delay: 1.5s;

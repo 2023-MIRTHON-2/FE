@@ -12,6 +12,7 @@ import { Pagination } from "swiper/modules";
 
 import { JSON_PATH } from "../../constants/path";
 import { logo, mainImg } from "../../assets/images";
+import { Link } from "react-router-dom";
 
 export default function MainPage() {
   const [data, setData] = useState();
@@ -170,7 +171,7 @@ export default function MainPage() {
                   바로 여기로 지키는 <span className="text-my-tree">환경</span>
                 </h1>
               </h1>
-              <article data-scroll>
+              <article>
                 <p>
                   자영업의 <span className="text-my-tree">폐업률은 80%</span>
                   입니다. 많은 사업의 도전과 폐업이 반복되면서 발생하는
@@ -213,7 +214,7 @@ export default function MainPage() {
                   <span className="text-my-yellow">경제</span>
                 </h1>
               </h1>
-              <article data-scroll>
+              <article>
                 <p>
                   사업자들은{" "}
                   <span className="text-my-yellow">
@@ -248,7 +249,7 @@ export default function MainPage() {
                   <span className="text-my-purple">사회</span>
                 </h1>
               </h1>
-              <article data-scroll>
+              <article>
                 <p>
                   창업 전 자신의 사업 아이템의 반응을 확인할 수 있는 기회를
                   얻기는 쉽지 않습니다.
@@ -286,7 +287,7 @@ export default function MainPage() {
             <h2 className="ml-28 mt-6">같이 사업해보세요!</h2>
           </h1>
           <div className="last-main-btn my-20 px-12 py-6 border-2 rounded-xl shadow-md text-2xl font-bold cursor-pointer">
-            공유 공간 찾기
+            <Link to="/place/list">공유 공간 찾기</Link>
           </div>
         </div>
       </section>

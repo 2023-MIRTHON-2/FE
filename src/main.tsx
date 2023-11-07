@@ -10,6 +10,7 @@ import PlaceListPage from "./pages/place/PlaceListPage";
 import Layout from "./components/Layout";
 import "./styles/global.css";
 import PlaceDetailPage from "./pages/place/PlaceDetailPage";
+import LoginPage from "./pages/login/LoginPage";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Failed to find root element");
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/place/:id",
         element: <PlaceDetailPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
   },

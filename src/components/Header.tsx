@@ -18,9 +18,11 @@ export default function Header() {
       </div>
       <div>
         <button className="mr-10">
-          <Link to="places">공유공간 찾기</Link>
+          <Link to="/places">공유공간 찾기</Link>
         </button>
-        <button>로그인</button>
+        <button>
+          <Link to="/login">로그인</Link>
+        </button>
       </div>
     </header>
   );
