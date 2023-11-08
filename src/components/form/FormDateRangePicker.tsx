@@ -5,7 +5,10 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import dayjs from "dayjs";
 import { Controller } from "react-hook-form";
-import { FormInputStyle } from "../../styles/form/formStyle";
+import {
+  FormDatePickerCalendarStyle,
+  FormInputStyle,
+} from "../../styles/form/formStyle";
 
 interface props {
   name: string;
@@ -138,23 +141,23 @@ const FormDateRangePicker = ({
             </FormInputStyle>
 
             {showCalendar && (
-              // <FormDatePickerCalendarStyle>
-              <DateRangePicker
-                // locale={ko}
-                onChange={(date: any) => {
-                  if (date.selection.startDate !== date.selection.endDate) {
-                    setShowCalendar(!showCalendar);
-                  }
-                  field.onChange(date);
-                  setCalendarState([date.selection]);
-                }}
-                // showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={1}
-                ranges={calendarState}
-                direction="horizontal"
-              />
-              // {/* </FormDatePickerCalendarStyle> */}
+              <FormDatePickerCalendarStyle>
+                <DateRangePicker
+                  // locale={ko}
+                  onChange={(date: any) => {
+                    if (date.selection.startDate !== date.selection.endDate) {
+                      setShowCalendar(!showCalendar);
+                    }
+                    field.onChange(date);
+                    setCalendarState([date.selection]);
+                  }}
+                  // showSelectionPreview={true}
+                  moveRangeOnFirstSelection={false}
+                  months={1}
+                  ranges={calendarState}
+                  direction="horizontal"
+                />
+              </FormDatePickerCalendarStyle>
             )}
           </div>
         )}
