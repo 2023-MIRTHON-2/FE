@@ -1,5 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
-import BookingSection from "../../components/booking/BookingSection";
+import BookingSection, {
+  formInfo,
+} from "../../components/booking/BookingSection";
 import { InputType } from "../../components/form/FormInput";
 import BaisicButton from "../../components/button/BaisicButton";
 import { useCallback } from "react";
@@ -7,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import { createBookingApi } from "../../assets/api/booking";
 import dayjs from "dayjs";
 
-const userSectionFromData = [
+const userSectionFromData: formInfo[] = [
   {
     formType: "input",
     subTitle: "이름",
@@ -27,7 +29,7 @@ const userSectionFromData = [
     required: true,
   },
 ];
-const bookingSectionFromData = [
+const bookingSectionFromData: formInfo[] = [
   {
     formType: "input",
     subTitle: "업종",
@@ -47,7 +49,7 @@ const bookingSectionFromData = [
     required: true,
   },
 ];
-const businessSectionFromData = [
+const businessSectionFromData: formInfo[] = [
   {
     formType: "text-area",
     subTitle: null,
@@ -58,7 +60,7 @@ const businessSectionFromData = [
     required: true,
   },
 ];
-const questionSectionFromData = [
+const questionSectionFromData: formInfo[] = [
   {
     formType: "text-area",
     subTitle: null,

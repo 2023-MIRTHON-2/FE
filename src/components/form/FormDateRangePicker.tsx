@@ -115,6 +115,7 @@ const FormDateRangePicker = ({
                     : ""
                 }
                 placeholder={"시작일"}
+                disabled={disabled}
               />
             </FormInputStyle>
             <div> ~ </div>
@@ -137,6 +138,7 @@ const FormDateRangePicker = ({
                     : ""
                 }
                 placeholder={"종료일"}
+                disabled={disabled}
               />
             </FormInputStyle>
 

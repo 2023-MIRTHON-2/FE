@@ -22,6 +22,7 @@ const FormTextArea = ({
         render={({ field }) => (
           <Textarea placeholder={placeholder} {...field} />
         )}
+        disabled={disabled}
       />
     </FormTextareaStyle>
   );

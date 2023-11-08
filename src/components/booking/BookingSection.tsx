@@ -2,17 +2,19 @@ import FormDateRangePicker from "../form/FormDateRangePicker";
 import FormTextArea from "../form/FormTextArea";
 import FormInput, { InputType } from "../form/FormInput";
 
+export type formInfo = {
+  formType: "input" | "text-area" | "date-range";
+  subTitle: string | null;
+  name: string;
+  placeholder: string;
+  type?: InputType;
+  disabled?: boolean;
+  required?: boolean;
+};
+
 interface props {
   title: string;
-  data: {
-    formType: "input" | "text-area" | "date-range";
-    subTitle: string | null;
-    name: string;
-    placeholder: string;
-    type?: InputType;
-    disabled?: boolean;
-    required?: boolean;
-  }[];
+  data: formInfo[];
 }
 
 const BookingSection = ({ title, data }: props) => {

@@ -2,7 +2,6 @@ import ArrowLeft from "../../assets/svg/ArrowLeft";
 import CommunicationIcon from "../../assets/svg/CommunicationIcon";
 import { useNavigate, useLocation } from "react-router-dom";
 import ChipWrap from "../../components/category/ChipWrap";
-import { convertCategoryList } from "../../assets/functions/place";
 import BaisicButton from "../../components/button/BaisicButton";
 import BasicCalendar from "../../components/BasicCalendar";
 import { useCallback, useEffect, useState } from "react";
