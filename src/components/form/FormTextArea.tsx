@@ -4,8 +4,6 @@ import { Controller } from "react-hook-form";
 interface props {
   name: string;
   placeholder: string;
-
-  // isMultiLine: boolean;
   disabled: boolean;
   required: boolean;
 }

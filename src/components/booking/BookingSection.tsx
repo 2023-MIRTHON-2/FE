@@ -50,8 +50,9 @@ const BookingSection = ({ title, data }: props) => {
               ></FormTextArea>
             ) : (
               <FormDateRangePicker
-                data={undefined}
-                field={undefined}
+                name={_data.name}
+                disabled={_data.disabled ?? false}
+                required={_data.required ?? false}
               ></FormDateRangePicker>
             )}
           </div>
