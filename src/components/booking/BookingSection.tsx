@@ -1,6 +1,6 @@
 import FormDateRangePicker from "../form/FormDateRangePicker";
 import FormTextArea from "../form/FormTextArea";
-import FormInput, { InputType } from "../form/formInput";
+import FormInput, { InputType } from "../form/FormInput";
 
 interface props {
   title: string;
@@ -25,7 +25,7 @@ const BookingSection = ({ title, data }: props) => {
       </div>
       <div className={`flex flex-col justify-start w-full gap-8 px-16 py-12`}>
         {data.map((_data) => (
-          <div className={`flex gap-8 w-full`}>
+          <div className={`flex gap-8 w-full items-center`}>
             {_data.subTitle && (
               <div
                 className={`font-semibold text-lg text-my-green min-w-[5rem]`}

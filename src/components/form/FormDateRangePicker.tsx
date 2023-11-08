@@ -5,6 +5,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import dayjs from "dayjs";
 import { Controller } from "react-hook-form";
+import { FormInputStyle } from "../../styles/form/formStyle";
 
 interface props {
   name: string;
@@ -55,7 +56,6 @@ const FormDateRangePicker = ({
       key: "selection",
     },
   ]);
-  // data;
 
   const handleClickOpenCalendar = () => {
     setShowCalendar(!showCalendar);
@@ -93,45 +93,50 @@ const FormDateRangePicker = ({
         rules={{ required: required }}
         render={({ field }) => (
           <div className={`relative flex gap-1 items-center`}>
-            <input
-              type="text"
-              readOnly
-              onClick={() => {
-                handleClickOpenCalendar();
-                if (!field.value)
-                  field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
-              }}
-              value={
-                field.value
-                  ? field.value.selection && field.value.selection.startDate
-                    ? `${dayjs(field.value.selection.startDate).format(
+            <FormInputStyle>
+              <input
+                type="text"
+                readOnly
+                onClick={() => {
+                  handleClickOpenCalendar();
+                  if (!field.value)
+                    field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
+                }}
+                value={
+                  field.value
+                    ? field.value.selection && field.value.selection.startDate
+                      ? `${dayjs(field.value.selection.startDate).format(
+                          "YYYY.MM.DD"
+                        )}`
+                      : field.value
+                    : ""
+                }
+                placeholder={"시작일"}
+              />
+            </FormInputStyle>
+            <div> ~ </div>
+            <FormInputStyle>
+              <input
+                type="text"
+                readOnly
+                onClick={() => {
+                  handleClickOpenCalendar();
+                  if (!field.value)
+                    field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
+                }}
+                value={
+                  field.value &&
+                  field.value.selection &&
+                  field.value.selection.endDate
+                    ? `${dayjs(field.value.selection.endDate).format(
                         "YYYY.MM.DD"
                       )}`
-                    : field.value
-                  : ""
-              }
-              placeholder={"시작일"}
-            />
-            <div>~</div>
-            <input
-              type="text"
-              readOnly
-              onClick={() => {
-                handleClickOpenCalendar();
-                if (!field.value)
-                  field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
-              }}
-              value={
-                field.value &&
-                field.value.selection &&
-                field.value.selection.endDate
-                  ? `${dayjs(field.value.selection.endDate).format(
-                      "YYYY.MM.DD"
-                    )}`
-                  : ""
-              }
-              placeholder={"종료일"}
-            />
+                    : ""
+                }
+                placeholder={"종료일"}
+              />
+            </FormInputStyle>
+
             {showCalendar && (
               // <FormDatePickerCalendarStyle>
               <DateRangePicker

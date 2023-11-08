@@ -1,8 +1,8 @@
 import { FormProvider, useForm } from "react-hook-form";
 import BookingSection from "../../components/booking/BookingSection";
-import { InputType } from "../../components/form/formInput";
+import { InputType } from "../../components/form/FormInput";
 import BaisicButton from "../../components/button/BaisicButton";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { createBookingApi } from "../../assets/api/booking";
 import dayjs from "dayjs";

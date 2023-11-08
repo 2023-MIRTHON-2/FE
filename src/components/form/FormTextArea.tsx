@@ -1,5 +1,6 @@
 import Textarea from "@mui/joy/Textarea";
 import { Controller } from "react-hook-form";
+import { FormTextareaStyle } from "../../styles/form/formStyle";
 
 interface props {
   name: string;
@@ -14,12 +15,15 @@ const FormTextArea = ({
   required = false,
 }: props) => {
   return (
-    <Controller
-      // key={key}
-      name={name}
-      rules={{ required: required }}
-      render={({ field }) => <Textarea placeholder={placeholder} {...field} />}
-    />
+    <FormTextareaStyle>
+      <Controller
+        name={name}
+        rules={{ required: required }}
+        render={({ field }) => (
+          <Textarea placeholder={placeholder} {...field} />
+        )}
+      />
+    </FormTextareaStyle>
   );
 };
 
