@@ -1,24 +1,26 @@
 import { useCallback, useEffect, useState } from "react";
 import FilteringSection from "../../components/category/FilteringSection";
 import BaisicButton from "../../components/button/BaisicButton";
-// import { getPlaceListApi } from "../../assets/api/place";
+import { getPlaceListApi } from "../../assets/api/place";
 import MainCard from "../../components/MainCard";
 import { PlaceInfoType } from "../../assets/type";
+import { useNavigate } from "react-router-dom";
 
 const PlaceListPage = () => {
+  const navigate = useNavigate();
   const [filterBusinessList, setFilterBusinessList] = useState<string[]>([]);
   const [filterLocationList, setFilterLocationList] = useState<string[]>([]);
   const [placeList, setPlaceList] = useState<PlaceInfoType[]>([]);
 
   const getPlaceList = useCallback(async () => {
-    // const response = await getPlaceListApi(
-    //   filterBusinessList.join(),
-    //   filterLocationList.join()
-    // );
-    // console.log(response, response.status);
-    // if (response.status === 200) {
-    //   // setPlaceList(response);
-    // }
+    const response = await getPlaceListApi(
+      filterBusinessList.length === 0 ? "total" : filterBusinessList.join(),
+      filterLocationList.length === 0 ? "total" : filterLocationList.join()
+    );
+    console.log(response, response.status);
+    if (response.status === 200) {
+      setPlaceList(response);
+    }
 
     setPlaceList([
       {
@@ -80,7 +82,10 @@ const PlaceListPage = () => {
       </section>
       <section className={`w-full py-[4rem] grid grid-cols-3`}>
         {placeList.map((place) => (
-          <div className={`px-4`}>
+          <div
+            className={`px-4`}
+            onClick={() => navigate(`/place/${place.id}`)}
+          >
             <MainCard
               key={place.id}
               location={place.location}
