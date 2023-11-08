@@ -55,29 +55,29 @@ const FormDateRangePicker = ({ data, field }: props) => {
     setShowCalendar(!showCalendar);
   };
 
-  useEffect(() => {
-    if (field.value) {
-      const _startDate = field.value.selection
-        ? field.value.selection.startDate
-        : typeof field.value === "string"
-        ? new Date(field.value)
-        : field.value;
+  // useEffect(() => {
+  //   if (field.value) {
+  //     const _startDate = field.value.selection
+  //       ? field.value.selection.startDate
+  //       : typeof field.value === "string"
+  //       ? new Date(field.value)
+  //       : field.value;
 
-      const _endDate = field.value.selection
-        ? field.value.selection.endDate
-        : typeof field.value === "string"
-        ? new Date(field.value)
-        : field.value;
+  //     const _endDate = field.value.selection
+  //       ? field.value.selection.endDate
+  //       : typeof field.value === "string"
+  //       ? new Date(field.value)
+  //       : field.value;
 
-      setCalendarState([
-        {
-          startDate: _startDate,
-          endDate: _endDate,
-          key: "selection",
-        },
-      ]);
-    }
-  }, [field]);
+  //     setCalendarState([
+  //       {
+  //         startDate: _startDate,
+  //         endDate: _endDate,
+  //         key: "selection",
+  //       },
+  //     ]);
+  //   }
+  // }, [field]);
 
   return (
     <>
@@ -88,18 +88,18 @@ const FormDateRangePicker = ({ data, field }: props) => {
           readOnly
           onClick={() => {
             handleClickOpenCalendar();
-            if (!field.value)
-              field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
+            //   if (!field.value)
+            //     field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
           }}
-          value={
-            field.value
-              ? field.value.selection && field.value.selection.startDate
-                ? `${dayjs(field.value.selection.startDate).format(
-                    "YYYY.MM.DD"
-                  )}`
-                : field.value
-              : ""
-          }
+          // value={
+          //   field.value
+          //     ? field.value.selection && field.value.selection.startDate
+          //       ? `${dayjs(field.value.selection.startDate).format(
+          //           "YYYY.MM.DD"
+          //         )}`
+          //       : field.value
+          //     : ""
+          // }
           placeholder={"시작일"}
         />
         <div>~</div>
@@ -108,16 +108,16 @@ const FormDateRangePicker = ({ data, field }: props) => {
           readOnly
           onClick={() => {
             handleClickOpenCalendar();
-            if (!field.value)
-              field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
+            //   if (!field.value)
+            //     field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
           }}
-          value={
-            field.value &&
-            field.value.selection &&
-            field.value.selection.endDate
-              ? `${dayjs(field.value.selection.endDate).format("YYYY.MM.DD")}`
-              : ""
-          }
+          // value={
+          //   field.value &&
+          //   field.value.selection &&
+          //   field.value.selection.endDate
+          //     ? `${dayjs(field.value.selection.endDate).format("YYYY.MM.DD")}`
+          //     : ""
+          // }
           placeholder={"종료일"}
         />
         {showCalendar && (
