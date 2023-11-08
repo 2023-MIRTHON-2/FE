@@ -5,7 +5,6 @@ import {
 } from "../node_modules/react-router-dom/dist/index";
 import "./main.css";
 import MainPage from "./pages/main/MainPage";
-import Places from "./pages/Places";
 import PlaceListPage from "./pages/place/PlaceListPage";
 import Layout from "./components/Layout";
 import "./styles/global.css";
@@ -24,10 +23,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <MainPage />,
-      },
-      {
-        path: "/places",
-        element: <Places />,
       },
       {
         path: "/place/list",
