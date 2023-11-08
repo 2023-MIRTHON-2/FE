@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 // import { ko } from "react-date-range/dist/locale";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import dayjs from "dayjs";
+import { Controller } from "react-hook-form";
+import {
+  FormDatePickerCalendarStyle,
+  FormInputStyle,
+} from "../../styles/form/formStyle";
 
 interface props {
-  data: any;
-  field: any;
+  name: string;
+  disabled: boolean;
+  required: boolean;
 }
 
 // const FormDatePickerCalendarStyle = styled.div`
@@ -40,7 +46,11 @@ interface props {
 //   }
 // `;
 
-const FormDateRangePicker = ({ data, field }: props) => {
+const FormDateRangePicker = ({
+  name,
+  disabled = false,
+  required = false, // data,
+}: props) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [calendarState, setCalendarState] = useState([
     {
@@ -49,97 +59,111 @@ const FormDateRangePicker = ({ data, field }: props) => {
       key: "selection",
     },
   ]);
-  data;
 
   const handleClickOpenCalendar = () => {
     setShowCalendar(!showCalendar);
   };
 
-  useEffect(() => {
-    if (field.value) {
-      const _startDate = field.value.selection
-        ? field.value.selection.startDate
-        : typeof field.value === "string"
-        ? new Date(field.value)
-        : field.value;
+  // useEffect(() => {
+  //   if (field.value) {
+  //     const _startDate = field.value.selection
+  //       ? field.value.selection.startDate
+  //       : typeof field.value === "string"
+  //       ? new Date(field.value)
+  //       : field.value;
 
-      const _endDate = field.value.selection
-        ? field.value.selection.endDate
-        : typeof field.value === "string"
-        ? new Date(field.value)
-        : field.value;
+  //     const _endDate = field.value.selection
+  //       ? field.value.selection.endDate
+  //       : typeof field.value === "string"
+  //       ? new Date(field.value)
+  //       : field.value;
 
-      setCalendarState([
-        {
-          startDate: _startDate,
-          endDate: _endDate,
-          key: "selection",
-        },
-      ]);
-    }
-  }, [field]);
+  //     setCalendarState([
+  //       {
+  //         startDate: _startDate,
+  //         endDate: _endDate,
+  //         key: "selection",
+  //       },
+  //     ]);
+  //   }
+  // }, [field]);
 
   return (
     <>
       {/* <FormComponentTitle title={data.title} width={data.width ?? "100"}> */}
-      <div className={`relative flex gap-1 items-center`}>
-        <input
-          type="text"
-          readOnly
-          onClick={() => {
-            handleClickOpenCalendar();
-            if (!field.value)
-              field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
-          }}
-          value={
-            field.value
-              ? field.value.selection && field.value.selection.startDate
-                ? `${dayjs(field.value.selection.startDate).format(
-                    "YYYY.MM.DD"
-                  )}`
-                : field.value
-              : ""
-          }
-          placeholder={"시작일"}
-        />
-        <div>~</div>
-        <input
-          type="text"
-          readOnly
-          onClick={() => {
-            handleClickOpenCalendar();
-            if (!field.value)
-              field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
-          }}
-          value={
-            field.value &&
-            field.value.selection &&
-            field.value.selection.endDate
-              ? `${dayjs(field.value.selection.endDate).format("YYYY.MM.DD")}`
-              : ""
-          }
-          placeholder={"종료일"}
-        />
-        {showCalendar && (
-          // <FormDatePickerCalendarStyle>
-          <DateRangePicker
-            // locale={ko}
-            onChange={(date: any) => {
-              if (date.selection.startDate !== date.selection.endDate) {
-                setShowCalendar(!showCalendar);
-              }
-              field.onChange(date);
-              setCalendarState([date.selection]);
-            }}
-            // showSelectionPreview={true}
-            moveRangeOnFirstSelection={false}
-            months={1}
-            ranges={calendarState}
-            direction="horizontal"
-          />
-          // {/* </FormDatePickerCalendarStyle> */}
+      <Controller
+        name={name}
+        rules={{ required: required }}
+        render={({ field }) => (
+          <div className={`relative flex gap-1 items-center`}>
+            <FormInputStyle>
+              <input
+                type="text"
+                readOnly
+                onClick={() => {
+                  handleClickOpenCalendar();
+                  if (!field.value)
+                    field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
+                }}
+                value={
+                  field.value
+                    ? field.value.selection && field.value.selection.startDate
+                      ? `${dayjs(field.value.selection.startDate).format(
+                          "YYYY.MM.DD"
+                        )}`
+                      : field.value
+                    : ""
+                }
+                placeholder={"시작일"}
+                disabled={disabled}
+              />
+            </FormInputStyle>
+            <div> ~ </div>
+            <FormInputStyle>
+              <input
+                type="text"
+                readOnly
+                onClick={() => {
+                  handleClickOpenCalendar();
+                  if (!field.value)
+                    field.onChange(dayjs(new Date()).format("YYYY.MM.DD"));
+                }}
+                value={
+                  field.value &&
+                  field.value.selection &&
+                  field.value.selection.endDate
+                    ? `${dayjs(field.value.selection.endDate).format(
+                        "YYYY.MM.DD"
+                      )}`
+                    : ""
+                }
+                placeholder={"종료일"}
+                disabled={disabled}
+              />
+            </FormInputStyle>
+
+            {showCalendar && (
+              <FormDatePickerCalendarStyle>
+                <DateRangePicker
+                  // locale={ko}
+                  onChange={(date: any) => {
+                    if (date.selection.startDate !== date.selection.endDate) {
+                      setShowCalendar(!showCalendar);
+                    }
+                    field.onChange(date);
+                    setCalendarState([date.selection]);
+                  }}
+                  // showSelectionPreview={true}
+                  moveRangeOnFirstSelection={false}
+                  months={1}
+                  ranges={calendarState}
+                  direction="horizontal"
+                />
+              </FormDatePickerCalendarStyle>
+            )}
+          </div>
         )}
-      </div>
+      />
       {/* </FormComponentTitle> */}
     </>
   );

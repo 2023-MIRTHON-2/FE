@@ -1,24 +1,26 @@
 import { useCallback, useEffect, useState } from "react";
 import FilteringSection from "../../components/category/FilteringSection";
 import BaisicButton from "../../components/button/BaisicButton";
-// import { getPlaceListApi } from "../../assets/api/place";
+import { getPlaceListApi } from "../../assets/api/place";
 import MainCard from "../../components/MainCard";
 import { PlaceInfoType } from "../../assets/type";
+import { useNavigate } from "react-router-dom";
 
 const PlaceListPage = () => {
+  const navigate = useNavigate();
   const [filterBusinessList, setFilterBusinessList] = useState<string[]>([]);
   const [filterLocationList, setFilterLocationList] = useState<string[]>([]);
   const [placeList, setPlaceList] = useState<PlaceInfoType[]>([]);
 
   const getPlaceList = useCallback(async () => {
-    // const response = await getPlaceListApi(
-    //   filterBusinessList.join(),
-    //   filterLocationList.join()
-    // );
-    // console.log(response, response.status);
-    // if (response.status === 200) {
-    //   // setPlaceList(response);
-    // }
+    const response = await getPlaceListApi(
+      filterBusinessList.length === 0 ? "total" : filterBusinessList.join(),
+      filterLocationList.length === 0 ? "total" : filterLocationList.join()
+    );
+    console.log(response, response.status);
+    if (response.status === 200) {
+      setPlaceList(response);
+    }
 
     setPlaceList([
       {
@@ -49,13 +51,13 @@ const PlaceListPage = () => {
   return (
     <article className={`flex justify-center flex-col items-center`}>
       <section
-        className={`w-full flex flex-col items-center gap-4 basic-boder-bottom p-[1.8125rem]`}
+        className={`w-full flex flex-col items-center gap-4 basic-border-bottom p-[1.8125rem]`}
       >
         <div className={`font-bold text-[2.5rem]`}>공유 공간 찾기</div>
         <div>조건에 맞는 공유공간을 확인할 수 있습니다.</div>
       </section>
       <section
-        className={`w-full flex flex-col gap-9 items-center p-[1.4375rem] basic-boder-bottom`}
+        className={`w-full flex flex-col gap-9 items-center p-[1.4375rem] basic-border-bottom`}
       >
         <div className={`flex flex-col gap-[3.75rem]`}>
           <FilteringSection
@@ -80,7 +82,10 @@ const PlaceListPage = () => {
       </section>
       <section className={`w-full py-[4rem] grid grid-cols-3`}>
         {placeList.map((place) => (
-          <div className={`px-4`}>
+          <div
+            className={`px-4`}
+            onClick={() => navigate(`/place/${place.id}`)}
+          >
             <MainCard
               key={place.id}
               location={place.location}

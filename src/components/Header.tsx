@@ -18,7 +18,7 @@ export default function Header() {
       </div>
       <div>
         <button className="mr-10">
-          <Link to="places">공유공간 찾기</Link>
+          <Link to="/place/list">공유공간 찾기</Link>
         </button>
         <button>로그인</button>
       </div>

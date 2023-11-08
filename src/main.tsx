@@ -5,11 +5,11 @@ import {
 } from "../node_modules/react-router-dom/dist/index";
 import "./main.css";
 import MainPage from "./pages/main/MainPage";
-import Places from "./pages/Places";
 import PlaceListPage from "./pages/place/PlaceListPage";
 import Layout from "./components/Layout";
 import "./styles/global.css";
 import PlaceDetailPage from "./pages/place/PlaceDetailPage";
+import CreateBookingPage from "./pages/booking/CreateBookingPage";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Failed to find root element");
@@ -25,16 +25,16 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: "/places",
-        element: <Places />,
-      },
-      {
         path: "/place/list",
         element: <PlaceListPage />,
       },
       {
         path: "/place/:id",
         element: <PlaceDetailPage />,
+      },
+      {
+        path: "/booking/:bookingId/create",
+        element: <CreateBookingPage />,
       },
     ],
   },
