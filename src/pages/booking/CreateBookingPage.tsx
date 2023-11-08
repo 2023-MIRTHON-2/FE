@@ -2,6 +2,10 @@ import { FormProvider, useForm } from "react-hook-form";
 import BookingSection from "../../components/booking/BookingSection";
 import { InputType } from "../../components/form/formInput";
 import BaisicButton from "../../components/button/BaisicButton";
+import { useCallback, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { createBookingApi } from "../../assets/api/booking";
+import dayjs from "dayjs";
 
 const userSectionFromData = [
   {
@@ -16,7 +20,7 @@ const userSectionFromData = [
   {
     formType: "input",
     subTitle: "전화번호",
-    name: "phoneNumber",
+    name: "phone",
     placeholder: "전화번호를 입력해주세요",
     type: "number" as InputType,
     disabled: false,
@@ -27,7 +31,7 @@ const bookingSectionFromData = [
   {
     formType: "input",
     subTitle: "업종",
-    name: "business",
+    name: "category",
     placeholder: "자신의 업종을 입력해주세요.",
     type: "text" as InputType,
     disabled: false,
@@ -47,7 +51,7 @@ const businessSectionFromData = [
   {
     formType: "text-area",
     subTitle: null,
-    name: "businessMemo",
+    name: "information",
     placeholder: "자신의 사업을 설명해주세요.",
     type: "text",
     disabled: false,
@@ -58,7 +62,7 @@ const questionSectionFromData = [
   {
     formType: "text-area",
     subTitle: null,
-    name: "question",
+    name: "inquiry",
     placeholder: "사업장에 문의할 내용을 입력하세요.",
     type: "text",
     disabled: false,
@@ -66,7 +70,28 @@ const questionSectionFromData = [
   },
 ];
 const CreateBookingPage = () => {
+  const location = useLocation();
   const methods = useForm({ mode: "onChange" });
+
+  const submitForm = useCallback(
+    async (result: any) => {
+      const planId = Number(location.pathname.split("/")[2]);
+      const reqBody = {
+        ...result,
+        phone: result.phone.toString(),
+        startDate: dayjs(result.period.selection.startDate).format(
+          "YYYY-MM-DD"
+        ),
+        endDate: dayjs(result.period.selection.endDate).format("YYYY-MM-DD"),
+      };
+      const response = await createBookingApi(planId, reqBody);
+
+      if (response.status === 200) {
+        //페이지 이동
+      }
+    },
+    [location, methods]
+  );
 
   return (
     <article className={`flex w-full flex-col gap-10`}>
@@ -102,9 +127,7 @@ const CreateBookingPage = () => {
           content={"접수하기"}
           color={"green"}
           type={"submit"}
-          onClickEvent={methods.handleSubmit((result) => {
-            console.log(result);
-          })}
+          onClickEvent={methods.handleSubmit(submitForm)}
         ></BaisicButton>
       </div>
     </article>

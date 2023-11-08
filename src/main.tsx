@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         element: <PlaceDetailPage />,
       },
       {
-        path: "/booking/create",
+        path: "/booking/:bookingId/create",
         element: <CreateBookingPage />,
       },
     ],
