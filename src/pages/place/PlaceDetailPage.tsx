@@ -19,7 +19,7 @@ const PlaceDetailPage = () => {
   return (
     <article className={``}>
       <section
-        className={`flex w-full text-my-green justify-between items-center basic-boder-bottom px-3 pb-5`}
+        className={`flex w-full text-my-green justify-between items-center basic-border-bottom px-3 pb-5`}
       >
         <div
           className={`flex gap-2 items-center cursor-pointer`}
@@ -34,7 +34,7 @@ const PlaceDetailPage = () => {
         </div>
       </section>
 
-      <section className={`flex gap-9 py-[4rem] px-7 basic-boder-bottom`}>
+      <section className={`flex gap-9 py-[4rem] px-7 basic-border-bottom`}>
         <div className={`flex flex-col w-fit gap-6`}>
           <div
             className={`felx flex-grow h-[27.5rem] rounded-2xl bg-gray-300`}

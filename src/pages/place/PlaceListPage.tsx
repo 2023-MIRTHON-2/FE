@@ -49,13 +49,13 @@ const PlaceListPage = () => {
   return (
     <article className={`flex justify-center flex-col items-center`}>
       <section
-        className={`w-full flex flex-col items-center gap-4 basic-boder-bottom p-[1.8125rem]`}
+        className={`w-full flex flex-col items-center gap-4 basic-border-bottom p-[1.8125rem]`}
       >
         <div className={`font-bold text-[2.5rem]`}>공유 공간 찾기</div>
         <div>조건에 맞는 공유공간을 확인할 수 있습니다.</div>
       </section>
       <section
-        className={`w-full flex flex-col gap-9 items-center p-[1.4375rem] basic-boder-bottom`}
+        className={`w-full flex flex-col gap-9 items-center p-[1.4375rem] basic-border-bottom`}
       >
         <div className={`flex flex-col gap-[3.75rem]`}>
           <FilteringSection
