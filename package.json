@@ -31,6 +31,7 @@
     "scroll": "^3.0.1",
     "scroll-out": "^2.2.12",
     "sort-by": "^1.2.0",
+    "styled-components": "^6.1.1",
     "swiper": "^11.0.3",
     "typeit-react": "^2.6.4"
   },
@@ -38,6 +39,7 @@
     "@types/react": "^18.2.34",
     "@types/react-date-range": "^1.4.7",
     "@types/react-dom": "^18.2.14",
+    "@types/styled-components": "^5.1.30",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
