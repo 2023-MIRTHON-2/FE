@@ -36,3 +36,34 @@ export const FormTextareaStyle = styled(InputStyle)`
     width: 100%;
   }
 `;
+
+export const FormDatePickerCalendarStyle = styled.div`
+  & {
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    z-index: 1;
+
+    .rdrDefinedRangesWrapper,
+    .rdrDateDisplayWrapper {
+      display: none;
+    }
+    .rdrDayToday .rdrDayNumber span:after {
+      background: #fff;
+    }
+    .rdrDateRangePickerWrapper {
+      width: 100%;
+    }
+    .rdrCalendarWrapper {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid var(--gray-70);
+      background: var(--gray-100);
+      box-shadow: 0px 8px 24px 0px rgba(25, 32, 41, 0.16);
+    }
+    .rdrMonthsHorizontal > .rdrMonth {
+      width: 100%;
+    }
+  }
+`;
