@@ -18,4 +18,9 @@ const mainImg = {
   social: "/images/mainPage/social.png",
 };
 
-export { logo, mainImg };
+const JoinImg = {
+  storeGreen: "/images/joinPage/store-green.png",
+  storeRed: "images/joinPage/store-red.png",
+};
+
+export { logo, mainImg, JoinImg };
