@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import "./styles/global.css";
 import PlaceDetailPage from "./pages/place/PlaceDetailPage";
 import CreateBookingPage from "./pages/booking/CreateBookingPage";
+import BookingDetailPage from "./pages/booking/BookingDetailPage";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Failed to find root element");
@@ -33,8 +34,12 @@ const router = createBrowserRouter([
         element: <PlaceDetailPage />,
       },
       {
-        path: "/booking/:bookingId/create",
+        path: "/booking/:placeId/create",
         element: <CreateBookingPage />,
+      },
+      {
+        path: "/booking/detail/:bookingId",
+        element: <BookingDetailPage />,
       },
     ],
   },
