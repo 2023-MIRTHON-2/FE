@@ -8,3 +8,12 @@ export const createBookingApi = async (placeId: number, reqBody: any) => {
   });
   return data;
 };
+
+export const getBookingDetailApi = async (bookingId: number) => {
+  let url = `plans/show/${bookingId}/`;
+
+  const data = await basicAPI.get(url).then((response) => {
+    return response.data;
+  });
+  return data;
+};

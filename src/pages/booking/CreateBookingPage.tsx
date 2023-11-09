@@ -8,6 +8,7 @@ import { useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { createBookingApi } from "../../assets/api/booking";
 import dayjs from "dayjs";
+import Title from "../../components/common/Title";
 
 const userSectionFromData: formInfo[] = [
   {
@@ -97,11 +98,7 @@ const CreateBookingPage = () => {
 
   return (
     <article className={`flex w-full flex-col gap-10`}>
-      <section
-        className={`flex w-full justify-center font-bold text-3xl pb-10 text-my-green basic-border-bottom`}
-      >
-        사업 계획서
-      </section>
+      <Title title={"사업 계획서"}></Title>
 
       <FormProvider {...methods}>
         <form>
