@@ -3,7 +3,7 @@ import Input from "@mui/joy/Input";
 import { FormInputStyle } from "../../styles/form/formStyle";
 import BaisicButton from "../button/BaisicButton";
 
-export type InputType = "text" | "number" | "password";
+export type InputType = "text" | "number" | "password" | "file";
 
 interface props {
   name: string;
@@ -13,8 +13,10 @@ interface props {
   required: boolean;
   endDecorator?: {
     type: "button";
-    onClickEvent: (value: any) => void;
+    content: string;
+    onClickEvent: (value: any) => void | null;
   } | null;
+  accept?: string | null;
 }
 
 const FormInput = ({
@@ -24,6 +26,7 @@ const FormInput = ({
   disabled = false,
   required = false,
   endDecorator = null,
+  accept = null,
 }: props) => {
   return (
     <FormInputStyle>
@@ -31,34 +34,57 @@ const FormInput = ({
         name={name}
         rules={{ required: required }}
         render={({ field }) => (
-          <Input
-            type={type}
-            placeholder={placeholder}
-            disabled={disabled}
-            endDecorator={
-              <>
-                {endDecorator ? (
-                  endDecorator.type === "button" ? (
-                    <BaisicButton
-                      content={"조회하기"}
-                      color={"green"}
-                      type={"button"}
-                      onClickEvent={() => {
-                        endDecorator.onClickEvent &&
-                          endDecorator.onClickEvent(field.value);
-                      }}
-                      size={"small"}
-                    />
+          <>
+            {type === "file" && (
+              <div className={`flex justify-between`}>
+                <input
+                  className="upload-name"
+                  value={field.value}
+                  placeholder={placeholder}
+                />
+                <label
+                  htmlFor={`${name}-file`}
+                  className={`flex justify-center items-center rounded-md p-4 text-my-green !w-[5rem] h-[1.5rem] font-normal text-xs cursor-pointer`}
+                  style={{
+                    boxShadow: "0px 0px 5px 2px rgba(0, 0, 0, 0.25)",
+                  }}
+                >
+                  첨부하기
+                </label>
+              </div>
+            )}
+            <Input
+              id={type === "file" ? `${name}-file` : ""}
+              className={`${type === "file" ? "!hidden" : ""}`}
+              type={type}
+              placeholder={placeholder}
+              disabled={disabled}
+              // inputProps={{ accept: accept }}
+              endDecorator={
+                <>
+                  {endDecorator ? (
+                    endDecorator.type === "button" ? (
+                      <BaisicButton
+                        content={endDecorator.content}
+                        color={"green"}
+                        type={"button"}
+                        onClickEvent={() => {
+                          endDecorator.onClickEvent &&
+                            endDecorator.onClickEvent(field.value);
+                        }}
+                        size={"small"}
+                      />
+                    ) : (
+                      ""
+                    )
                   ) : (
                     ""
-                  )
-                ) : (
-                  ""
-                )}
-              </>
-            }
-            {...field}
-          />
+                  )}
+                </>
+              }
+              {...field}
+            />
+          </>
         )}
       />
     </FormInputStyle>

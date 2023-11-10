@@ -10,9 +10,11 @@ export type formInfo = {
   type?: InputType;
   disabled?: boolean;
   required?: boolean;
+  accept?: string;
   endDecorator?: {
     type: "button";
-    onClickEvent: (value: any) => void;
+    content: string;
+    onClickEvent: (value: any) => void | null;
   };
 };
 

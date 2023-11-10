@@ -21,8 +21,19 @@ const makeBasicSectionFromData = (submitEvent: any): formInfo[] => {
       required: true,
       endDecorator: {
         type: "button",
+        content: "조회하기",
         onClickEvent: (value) => submitEvent(value),
       },
+    },
+    {
+      formType: "input",
+      subTitle: "임대차 계약서",
+      name: "lease",
+      placeholder: "임대차 계약서를 업로드해주세요",
+      type: "file",
+      disabled: false,
+      required: true,
+      accept: ".pdf",
     },
   ];
 };
