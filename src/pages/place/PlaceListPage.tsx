@@ -5,6 +5,7 @@ import { getPlaceListApi } from "../../assets/api/place";
 import MainCard from "../../components/MainCard";
 import { PlaceInfoType } from "../../assets/type";
 import { useNavigate } from "react-router-dom";
+import { BASCI_URL } from "../../assets/api/core";
 
 const PlaceListPage = () => {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ const PlaceListPage = () => {
               title={place.placeName}
               subTitle={place.article}
               price={place.cost}
-              src={place.placeImageUrl}
+              src={`${BASCI_URL.slice(0, -1)}${place.placeImageUrl}`}
               isBasicMode={true}
             ></MainCard>
           </div>
