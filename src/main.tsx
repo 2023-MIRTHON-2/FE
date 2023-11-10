@@ -11,6 +11,11 @@ import "./styles/global.css";
 import PlaceDetailPage from "./pages/place/PlaceDetailPage";
 import CreateBookingPage from "./pages/booking/CreateBookingPage";
 import BookingDetailPage from "./pages/booking/BookingDetailPage";
+import LoginPage from "./pages/login/LoginPage";
+import JoinPage from "./pages/join/JoinPage";
+import JoinCeoPage from "./pages/join/JoinCeoPage";
+import JoinUserPage from "./pages/join/JoinUserPage";
+import MyPage from "./pages/my/MyPage";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Failed to find root element");
@@ -40,6 +45,26 @@ const router = createBrowserRouter([
       {
         path: "/booking/detail/:bookingId",
         element: <BookingDetailPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/join",
+        element: <JoinPage />,
+      },
+      {
+        path: "/join/ceo",
+        element: <JoinCeoPage />,
+      },
+      {
+        path: "/join/user",
+        element: <JoinUserPage />,
+      },
+      {
+        path: "/my",
+        element: <MyPage />,
       },
     ],
   },

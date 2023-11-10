@@ -41,8 +41,8 @@ img {
   opacity: 0;
   will-change: transform, scale, opacity;
   transform: translateY(6rem) scale(0.93);
-  transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transition-delay: 0.5s;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-delay: 0.3s;
 }
 
 [data-scroll="in"] {
@@ -55,20 +55,27 @@ img {
 }
 
 .main-logo {
-  animation: rotate180 1s forwards ease-in-out;
-  animation-delay: 1.5s;
+  animation: rotate180 1.5s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: transform;
+  animation-delay: 1s;
 }
 
+.main-dialog img {
+  transition-delay: 1s;
+}
 .sec-title[data-scroll] {
+  transition-delay: 0.5s;
+}
+
+.ul-cards[data-scroll] {
   transition-delay: 0.8s;
 }
-.ul-cards[data-scroll] {
-  transition-delay: 1.5s;
-}
 .ul-cards[data-scroll="in"] {
-  transform: translateY(-3rem) scale(1);
+  transform: translateY(0rem) scale(1);
 }
-
+.ul-cards:first-child {
+  background-color: red;
+}
 .esg[data-scroll] {
   transition-delay: 0.3s;
 }
@@ -99,6 +106,10 @@ img {
   box-shadow: 56px 44px 47px -22px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 56px 44px 47px -22px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 56px 44px 47px -22px rgba(0, 0, 0, 0.75);
+}
+
+.join-input::placeholder {
+  font-size: 12px;
 }
 
 @media screen and (max-width: 1080px) {
