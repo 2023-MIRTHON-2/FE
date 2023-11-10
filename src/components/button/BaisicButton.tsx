@@ -6,6 +6,7 @@ interface props {
   type: "submit" | "button";
   onClickEvent: () => void;
   width?: string;
+  size?: "normal" | "small";
 }
 
 const BaisicButton = ({
@@ -14,11 +15,17 @@ const BaisicButton = ({
   type = "button",
   onClickEvent,
   width = "18.75rem",
+  size = "normal",
 }: props) => {
   return (
     <button
-      className={`flex justify-center items-center rounded-md p-4 font-semibold min-w-[12rem] ${
+      className={`flex justify-center items-center rounded-md p-4 ${
         color === "red" ? "text-my-red" : "text-my-green"
+      }
+      ${
+        size === "normal"
+          ? "min-w-[12rem] font-semibold"
+          : "!w-[5rem] h-[1.5rem] font-normal text-xs"
       }`}
       style={{
         boxShadow: "0px 0px 5px 2px rgba(0, 0, 0, 0.25)",
