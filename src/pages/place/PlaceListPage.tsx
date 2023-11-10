@@ -14,34 +14,15 @@ const PlaceListPage = () => {
 
   const getPlaceList = useCallback(async () => {
     const response = await getPlaceListApi(
-      filterBusinessList.length === 0 ? "total" : filterBusinessList.join(),
-      filterLocationList.length === 0 ? "total" : filterLocationList.join()
+      filterBusinessList.length === 0 || filterBusinessList.includes("전체")
+        ? "total"
+        : filterBusinessList.join(),
+      filterLocationList.length === 0 || filterLocationList.includes("전체")
+        ? "total"
+        : filterLocationList.join()
     );
-    console.log(response, response.status);
-    if (response.status === 200) {
-      setPlaceList(response);
-    }
 
-    setPlaceList([
-      {
-        id: 1,
-        placeName: "성수1-요식업1",
-        placeImageUrl: "default",
-        business: "요식업",
-        location: "성수",
-        article: "설명글1",
-        cost: 100000,
-      },
-      {
-        id: 2,
-        placeName: "성수1-요식업1",
-        placeImageUrl: "default",
-        business: "요식업",
-        location: "성수",
-        article: "설명글1",
-        cost: 100000,
-      },
-    ]);
+    setPlaceList(response);
   }, [filterBusinessList, filterLocationList]);
 
   useEffect(() => {
@@ -83,8 +64,9 @@ const PlaceListPage = () => {
       <section className={`w-full py-[4rem] grid grid-cols-3`}>
         {placeList.map((place) => (
           <div
-            className={`px-4`}
+            className={`px-4 pb-10`}
             onClick={() => navigate(`/place/${place.id}`)}
+            key={place.id}
           >
             <MainCard
               key={place.id}

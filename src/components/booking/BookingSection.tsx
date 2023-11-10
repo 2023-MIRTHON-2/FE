@@ -26,8 +26,8 @@ const BookingSection = ({ title, data }: props) => {
         {title}
       </div>
       <div className={`flex flex-col justify-start w-full gap-8 px-16 py-12`}>
-        {data.map((_data) => (
-          <div className={`flex gap-8 w-full items-center`}>
+        {data.map((_data, index) => (
+          <div className={`flex gap-8 w-full items-center`} key={index}>
             {_data.subTitle && (
               <div
                 className={`font-semibold text-lg text-my-green min-w-[5rem]`}
