@@ -1,6 +1,7 @@
 import { Controller } from "react-hook-form";
 import Input from "@mui/joy/Input";
 import { FormInputStyle } from "../../styles/form/formStyle";
+import BaisicButton from "../button/BaisicButton";
 
 export type InputType = "text" | "number" | "password";
 
@@ -10,6 +11,10 @@ interface props {
   type: InputType;
   disabled: boolean;
   required: boolean;
+  endDecorator?: {
+    type: "button";
+    onClickEvent: (value: any) => void;
+  } | null;
 }
 
 const FormInput = ({
@@ -18,6 +23,7 @@ const FormInput = ({
   type,
   disabled = false,
   required = false,
+  endDecorator = null,
 }: props) => {
   return (
     <FormInputStyle>
@@ -29,26 +35,34 @@ const FormInput = ({
             type={type}
             placeholder={placeholder}
             disabled={disabled}
+            endDecorator={
+              <>
+                {endDecorator ? (
+                  endDecorator.type === "button" ? (
+                    <BaisicButton
+                      content={"조회하기"}
+                      color={"green"}
+                      type={"button"}
+                      onClickEvent={() => {
+                        endDecorator.onClickEvent &&
+                          endDecorator.onClickEvent(field.value);
+                      }}
+                      size={"small"}
+                    />
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  ""
+                )}
+              </>
+            }
             {...field}
-            // min={data.min}
-            // max={data.max}
-            // minLength={data.minLength}
-            // maxLength={data.maxLength}
-            // onChange={(e) => {
-            //   field?.onChange(e.target.value);
-            //   data.changeHandler ? data.changeHandler(e.target.value) : null;
-            // }}
-            // onBlur={(option) => {
-            //   data.blurHandler && data.blurHandler(option);
-            // }}
           />
         )}
       />
     </FormInputStyle>
   );
 };
-{
-  /* <FormInput data={data} type={data.inputType} field={field}></FormInput> */
-}
 
 export default FormInput;
