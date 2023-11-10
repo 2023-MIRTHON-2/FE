@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Title from "../../components/common/Title";
 import BookingSection, {
   formInfo,
@@ -6,18 +6,26 @@ import BookingSection, {
 import { FormProvider, useForm } from "react-hook-form";
 import FilteringSection from "../../components/category/FilteringSection";
 import FormTextArea from "../../components/form/FormTextArea";
+import BaisicButton from "../../components/button/BaisicButton";
+import { validateLicenseNumApi } from "../../assets/api/place";
 
-const basicSectionFromData: formInfo[] = [
-  {
-    formType: "input",
-    subTitle: "사업자 등록번호",
-    name: "licenseNum",
-    placeholder: "사업자 등록번호를 입력해주세요",
-    type: "number",
-    disabled: false,
-    required: true,
-  },
-];
+const makeBasicSectionFromData = (submitEvent: any): formInfo[] => {
+  return [
+    {
+      formType: "input",
+      subTitle: "사업자 등록번호",
+      name: "licenseNum",
+      placeholder: "사업자 등록번호를 입력해주세요",
+      type: "number",
+      disabled: false,
+      required: true,
+      endDecorator: {
+        type: "button",
+        onClickEvent: (value) => submitEvent(value),
+      },
+    },
+  ];
+};
 
 const makePlaceSectionFromData = (needImpossibleDate: boolean): formInfo[] => {
   return [
@@ -49,6 +57,7 @@ const makePlaceSectionFromData = (needImpossibleDate: boolean): formInfo[] => {
     },
   ];
 };
+
 const CreatePlacePage = () => {
   const methods = useForm({ mode: "onChange" });
 
@@ -56,7 +65,17 @@ const CreatePlacePage = () => {
   const [filterLocationList, setFilterLocationList] = useState<string[]>([]);
   const [placeSectionFromData, setPlaceSectionFromData] = useState<any[]>([]);
   const [needImpossibleDate, setNeedImpossibleDate] = useState<boolean>(true);
-  console.log(needImpossibleDate);
+
+  const submitLicenseNum = useCallback(
+    async (value: number) => {
+      const response = await validateLicenseNumApi(value);
+      if (response.status !== 200) {
+        methods.resetField("licenseNum", { defaultValue: "" });
+      }
+      alert(`${response.data.message}`);
+    },
+    [methods]
+  );
 
   useEffect(() => {
     setPlaceSectionFromData(makePlaceSectionFromData(needImpossibleDate));
@@ -70,7 +89,7 @@ const CreatePlacePage = () => {
         <form>
           <BookingSection
             title={null}
-            data={basicSectionFromData}
+            data={makeBasicSectionFromData(submitLicenseNum)}
           ></BookingSection>
 
           <div

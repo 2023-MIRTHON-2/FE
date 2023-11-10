@@ -10,6 +10,10 @@ export type formInfo = {
   type?: InputType;
   disabled?: boolean;
   required?: boolean;
+  endDecorator?: {
+    type: "button";
+    onClickEvent: (value: any) => void;
+  };
 };
 
 interface props {
@@ -44,6 +48,7 @@ const BookingSection = ({ title, data }: props) => {
                 type={_data.type ?? "text"}
                 disabled={_data.disabled ?? false}
                 required={_data.required ?? false}
+                endDecorator={_data.endDecorator}
               ></FormInput>
             ) : _data.formType === "text-area" ? (
               <FormTextArea

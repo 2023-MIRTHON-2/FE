@@ -17,3 +17,17 @@ export const getPlaceApi = async (placeId: number) => {
   });
   return data;
 };
+
+export const validateLicenseNumApi = async (licenseNum: number) => {
+  let url = `/users/checklicense/${licenseNum}/`;
+
+  const data = await basicAPI
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((response) => {
+      return response;
+    });
+  return data;
+};
