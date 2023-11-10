@@ -4,6 +4,10 @@ const logo = {
   store: "/images/store-logo.png",
 };
 
+const userImg = {
+  user: "/images/header-user-login.png",
+  ceo: "/images/header-ceo-login.png",
+};
 const mainImg = {
   place1: "/images/mainPage/place-1.png",
   place2: "/images/mainPage/place-2.png",
@@ -23,4 +27,4 @@ const JoinImg = {
   storeRed: "images/joinPage/store-red.png",
 };
 
-export { logo, mainImg, JoinImg };
+export { logo, userImg, mainImg, JoinImg };
