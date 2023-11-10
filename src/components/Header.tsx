@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { logo } from "../assets/images";
 import Logout from "./Logout";
 
-export default function Header({ isLoggedIn, handleIsLogout }) {
+export default function Header({ isCEO, isLoggedIn, handleIsLogout }) {
   return (
     <header
       className="w-1/1 py-1 px-20 lg:px-60 flex justify-between items-center shadow-md bg-white"
@@ -17,13 +17,13 @@ export default function Header({ isLoggedIn, handleIsLogout }) {
           />
         </Link>
       </div>
-      <div>
+      <div className="flex items-center">
         <button className="mr-10">
           <Link to="/place/list">공유공간 찾기</Link>
         </button>
         <button>
           {isLoggedIn ? (
-            <Logout handleIsLogout={handleIsLogout} />
+            <Logout isCEO={isCEO} handleIsLogout={handleIsLogout} />
           ) : (
             <Link to="/login">로그인</Link>
           )}

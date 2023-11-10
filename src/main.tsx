@@ -14,6 +14,7 @@ import LoginPage from "./pages/login/LoginPage";
 import JoinPage from "./pages/join/JoinPage";
 import JoinCeoPage from "./pages/join/JoinCeoPage";
 import JoinUserPage from "./pages/join/JoinUserPage";
+import MyPage from "./pages/my/MyPage";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Failed to find root element");
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/join/user",
         element: <JoinUserPage />,
+      },
+      {
+        path: "/my",
+        element: <MyPage />,
       },
     ],
   },
