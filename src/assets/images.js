@@ -27,4 +27,9 @@ const JoinImg = {
   storeRed: "images/joinPage/store-red.png",
 };
 
-export { logo, userImg, mainImg, JoinImg };
+const DividerImg = {
+  green: "/images/divider-green.png",
+  red: "/images/divider-red.png",
+  vertical: "/images/vertical-divider.png",
+};
+export { logo, userImg, mainImg, JoinImg, DividerImg };
