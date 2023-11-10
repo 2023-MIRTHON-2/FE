@@ -13,24 +13,26 @@ export type formInfo = {
 };
 
 interface props {
-  title: string;
+  title: string | null;
   data: formInfo[];
 }
 
 const BookingSection = ({ title, data }: props) => {
   return (
     <section className={`flex flex-col px-20`}>
-      <div
-        className={`basic-border-bottom py-2 w-full flex justify-start font-bold text-xl text-my-green`}
-      >
-        {title}
-      </div>
-      <div className={`flex flex-col justify-start w-full gap-8 px-16 py-12`}>
+      {title && (
+        <div
+          className={`basic-border-bottom py-2 w-full flex justify-start font-bold text-xl text-my-green`}
+        >
+          {title}
+        </div>
+      )}
+      <div className={`w-full flex flex-col justify-start gap-8 px-12 py-12`}>
         {data.map((_data, index) => (
           <div className={`flex gap-8 w-full items-center`} key={index}>
             {_data.subTitle && (
               <div
-                className={`font-semibold text-lg text-my-green min-w-[5rem]`}
+                className={`font-semibold text-lg text-my-green min-w-[10rem]`}
               >
                 {_data.subTitle}
               </div>

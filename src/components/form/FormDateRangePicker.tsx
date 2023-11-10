@@ -96,7 +96,7 @@ const FormDateRangePicker = ({
         rules={{ required: required }}
         render={({ field }) => (
           <div className={`relative flex gap-1 items-center`}>
-            <FormInputStyle>
+            <FormInputStyle disabled={disabled}>
               <input
                 type="text"
                 readOnly
@@ -119,7 +119,7 @@ const FormDateRangePicker = ({
               />
             </FormInputStyle>
             <div> ~ </div>
-            <FormInputStyle>
+            <FormInputStyle disabled={disabled}>
               <input
                 type="text"
                 readOnly

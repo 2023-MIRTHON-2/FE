@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface FormTextareaStyleProps {
+  minWidth: string | null;
+}
+
 export const InputStyle = styled.div`
   > div,
   > input {
@@ -18,21 +22,26 @@ export const InputStyle = styled.div`
   }
 `;
 
-export const FormInputStyle = styled(InputStyle)`
+export const FormInputStyle = styled(InputStyle)<{
+  disabled: boolean;
+}>`
   > div,
   > input {
     height: 3.125rem;
+    background-color: ${(props) => (props.disabled ? "#80808029" : "white")};
   }
 `;
 
-export const FormTextareaStyle = styled(InputStyle)`
+export const FormTextareaStyle = styled(InputStyle)<{
+  minWidth: string | null;
+}>`
   width: 100%;
   > div,
   > input {
     height: 15rem;
   }
   > div {
-    min-width: 30rem;
+    min-width: ${(props) => (props.minWidth ? props.minWidth : "30rem")};
     width: 100%;
   }
 `;

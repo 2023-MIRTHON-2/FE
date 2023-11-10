@@ -7,15 +7,17 @@ interface props {
   placeholder: string;
   disabled: boolean;
   required: boolean;
+  minWidth?: string | null;
 }
 const FormTextArea = ({
   name,
   placeholder,
   disabled = false,
   required = false,
+  minWidth = null,
 }: props) => {
   return (
-    <FormTextareaStyle>
+    <FormTextareaStyle minWidth={minWidth}>
       <Controller
         name={name}
         rules={{ required: required }}
