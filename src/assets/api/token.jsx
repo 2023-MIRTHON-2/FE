@@ -8,11 +8,11 @@ export const saveRefreshTokenToLocalStorage = (refreshToken) => {
 };
 
 // JWT 토큰을 로컬 스토리지에서 가져오는 함수
-export const getTokenFromLocalStorage = () => {
-  return localStorage.getItem("jwtToken");
+export const getAccessTokenFromLocalStorage = () => {
+  return localStorage.getItem("jwtAccessToken");
 };
 
 // JWT 토큰을 로컬 스토리지에서 제거하는 함수
-export const removeTokenFromLocalStorage = () => {
-  localStorage.removeItem("jwtToken");
+export const removeAccessTokenFromLocalStorage = () => {
+  localStorage.removeItem("jwtAccessToken");
 };

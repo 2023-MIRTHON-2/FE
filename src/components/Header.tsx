@@ -1,18 +1,8 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getUserInfoFromLocalStorage } from "../assets/api/userInfo";
 import { logo } from "../assets/images";
+import Logout from "./Logout";
 
-export default function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(false);
-  const initialUserInfo = getUserInfoFromLocalStorage();
-  useEffect(() => {
-    const storedUserInfo = getUserInfoFromLocalStorage();
-    if (storedUserInfo) {
-      setIsLoggedIn(true);
-    }
-  }, [initialUserInfo]);
-
+export default function Header({ isLoggedIn, handleIsLogout }) {
   return (
     <header
       className="w-1/1 py-1 px-20 lg:px-60 flex justify-between items-center shadow-md bg-white"
@@ -33,7 +23,7 @@ export default function Header() {
         </button>
         <button>
           {isLoggedIn ? (
-            <Link to="/">로그아웃</Link>
+            <Logout handleIsLogout={handleIsLogout} />
           ) : (
             <Link to="/login">로그인</Link>
           )}
