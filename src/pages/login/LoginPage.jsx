@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import LoginButton from "../../components/button/LoginButton";
 import LoginInput from "../../components/form/LoginInput";
 import axios from "axios";
-import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
 import { postIsCorrectLoginApi } from "../../assets/api/login";
 import {
   saveAccessTokenToLocalStorage,
@@ -16,6 +15,9 @@ export default function LoginPage() {
     id: "",
     password: "",
   });
+
+  const { handleIsLoggedIn } = useOutletContext();
+
   const navigate = useNavigate();
 
   const [isCorrectLogin, setIsCorrectLogin] = useState(false);
@@ -47,7 +49,8 @@ export default function LoginPage() {
         saveUserInfoToLocalStorage(user);
         saveAccessTokenToLocalStorage(access);
         saveRefreshTokenToLocalStorage(refresh);
-        navigate("/place/list");
+        handleIsLoggedIn();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

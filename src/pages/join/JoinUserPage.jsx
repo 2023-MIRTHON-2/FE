@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { basicAPI } from "../../assets/api/core";
 import {
   getIsDuplicatedApi,
@@ -40,6 +40,7 @@ export default function JoinUserPage() {
   };
 
   const navigate = useNavigate();
+  const { handleIsLoggedIn } = useOutletContext();
 
   const [isTouched, setisTouched] = useState({
     id: false,
@@ -116,10 +117,11 @@ export default function JoinUserPage() {
       .then((response) => {
         const { access, refresh } = response.data.token;
         const { user } = response.data;
+        console.log("응답 데이터:", response.data);
         saveAccessTokenToLocalStorage(access);
         saveRefreshTokenToLocalStorage(refresh);
         saveUserInfoToLocalStorage(user);
-        console.log("응답 데이터:", response.data);
+        handleIsLoggedIn();
         navigate("/");
       })
       .catch((error) => {

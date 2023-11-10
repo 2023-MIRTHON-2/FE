@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { basicAPI } from "../../assets/api/core";
 import { getIsDuplicatedApi, postJoinCEOApi } from "../../assets/api/join";
 import BaisicButton from "../../components/button/BaisicButton";
@@ -31,6 +31,7 @@ export default function JoinCeoPage() {
   };
 
   const navigate = useNavigate();
+  const { handleIsLoggedIn } = useOutletContext();
 
   const [isTouched, setisTouched] = useState({
     id: false,
@@ -108,10 +109,11 @@ export default function JoinCeoPage() {
         // 성공적으로 응답을 받았을 때 실행되는 부분
         const { access, refresh } = response.data.token;
         const { user } = response.data;
+        console.log("응답 데이터:", response.data);
         saveAccessTokenToLocalStorage(access);
         saveRefreshTokenToLocalStorage(refresh);
         saveUserInfoToLocalStorage(user);
-        console.log("응답 데이터:", response.data);
+        handleIsLoggedIn();
         navigate("/");
       })
       .catch((error) => {

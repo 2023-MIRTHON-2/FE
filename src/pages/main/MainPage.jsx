@@ -13,6 +13,7 @@ import { Pagination } from "swiper/modules";
 import { JSON_PATH } from "../../constants/path";
 import { logo, mainImg } from "../../assets/images";
 import { Link } from "react-router-dom";
+import { useOutletContext } from "../../../node_modules/react-router-dom/dist/index";
 
 export default function MainPage() {
   const [data, setData] = useState();
