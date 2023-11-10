@@ -98,10 +98,12 @@ const CreatePlacePage = () => {
 
       <FormProvider {...methods}>
         <form>
-          <BookingSection
-            title={null}
-            data={makeBasicSectionFromData(submitLicenseNum)}
-          ></BookingSection>
+          <div className={`pb-12`}>
+            <BookingSection
+              title={null}
+              data={makeBasicSectionFromData(submitLicenseNum)}
+            ></BookingSection>
+          </div>
 
           <div
             className={`flex flex-col gap-[3.75rem] pb-16 basic-border-bottom`}
@@ -121,19 +123,21 @@ const CreatePlacePage = () => {
           </div>
 
           <div>
-            <BookingSection
-              title={null}
-              data={placeSectionFromData}
-            ></BookingSection>
-            <div className="px-32 flex gap-4">
-              <input
-                type="radio"
-                checked={!needImpossibleDate}
-                onClick={() => setNeedImpossibleDate(!needImpossibleDate)}
-              ></input>
-              <label className={`text-my-green text-sm`}>
-                계약 불가능 기간 미설정{" "}
-              </label>
+            <div className={`pb-12`}>
+              <BookingSection
+                title={null}
+                data={placeSectionFromData}
+              ></BookingSection>
+              <div className="px-32 flex gap-4">
+                <input
+                  type="radio"
+                  checked={!needImpossibleDate}
+                  onClick={() => setNeedImpossibleDate(!needImpossibleDate)}
+                ></input>
+                <label className={`text-my-green text-sm`}>
+                  계약 불가능 기간 미설정{" "}
+                </label>
+              </div>
             </div>
 
             <div className={`flex gap-8`}>

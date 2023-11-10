@@ -102,22 +102,30 @@ const CreateBookingPage = () => {
 
       <FormProvider {...methods}>
         <form>
-          <BookingSection
-            title={"이용자 정보"}
-            data={userSectionFromData}
-          ></BookingSection>
-          <BookingSection
-            title={"계약 정보"}
-            data={bookingSectionFromData}
-          ></BookingSection>
-          <BookingSection
-            title={"사업 정보"}
-            data={businessSectionFromData}
-          ></BookingSection>
-          <BookingSection
-            title={"문의사항"}
-            data={questionSectionFromData}
-          ></BookingSection>
+          <div className={`pb-12`}>
+            <BookingSection
+              title={"이용자 정보"}
+              data={userSectionFromData}
+            ></BookingSection>
+          </div>
+          <div className={`pb-12`}>
+            <BookingSection
+              title={"계약 정보"}
+              data={bookingSectionFromData}
+            ></BookingSection>
+          </div>
+          <div className={`pb-12`}>
+            <BookingSection
+              title={"사업 정보"}
+              data={businessSectionFromData}
+            ></BookingSection>
+          </div>
+          <div className={`pb-12`}>
+            <BookingSection
+              title={"문의사항"}
+              data={questionSectionFromData}
+            ></BookingSection>
+          </div>
         </form>
       </FormProvider>
 
