@@ -8,8 +8,11 @@ import { useCallback, useEffect, useState } from "react";
 import { getPlaceApi } from "../../assets/api/place";
 import { PlaceInfoType } from "../../assets/type";
 import { BASCI_URL } from "../../assets/api/core";
+import { getUserInfoFromLocalStorage } from "../../assets/api/userInfo";
+import { Divider } from "@mui/joy";
 
 const PlaceDetailPage = () => {
+  const user = getUserInfoFromLocalStorage();
   const navigate = useNavigate();
   const location = useLocation();
   const [place, setPlace] = useState<PlaceInfoType | null>(null);
@@ -30,7 +33,7 @@ const PlaceDetailPage = () => {
       {place && (
         <>
           <section
-            className={`flex w-full text-my-green justify-between items-center basic-border-bottom px-3 pb-5`}
+            className={`flex w-full text-my-green justify-between items-center px-3 pb-5`}
           >
             <div
               className={`flex gap-2 items-center cursor-pointer`}
@@ -47,10 +50,13 @@ const PlaceDetailPage = () => {
               )}-${place.phone.slice(3, 7)}-${place.phone.slice(7, 11)}`}</div>
             </div>
           </section>
+          <Divider color={"my-green"} />
           <section className={`flex gap-9 py-[4rem] px-7 basic-border-bottom`}>
-            <div className={`flex flex-col min-w-[40%] w-fit gap-6`}>
+            <div
+              className={`flex flex-col min-w-[40%] max-w-[50%] w-fit gap-6`}
+            >
               <div
-                className={`felx flex-grow h-[27.5rem] rounded-2xl overflow-hidden bg-gray-300`}
+                className={`felx flex-grow h-[27.5rem] rounded-2xl overflow-hidden border border-solid border-gray-100`}
               >
                 <img
                   src={`${BASCI_URL.slice(0, -1)}${
@@ -61,21 +67,25 @@ const PlaceDetailPage = () => {
               </div>
               <div className={`flex gap-4`}>
                 {[0, 1, 2, 3].map((imgIndex) => {
-                  return place.placeImageUrl[imgIndex] ? (
+                  return (
                     <div
-                      className={`w-32 h-32 rounded-2xl bg-gray-300 overflow-hidden`}
+                      className={`w-32 h-32 rounded-2xl overflow-hidden cursor-pointer ${
+                        place.placeImageUrl[imgIndex]
+                          ? "border border-solid border-gray-100"
+                          : ""
+                      }`}
                       onClick={() => setPickedPictureIndex(imgIndex)}
                       key={imgIndex}
                     >
-                      <img
-                        src={`${BASCI_URL.slice(0, -1)}${
-                          place.placeImageUrl[imgIndex]
-                        }`}
-                        className={`w-full h-full object-cover`}
-                      ></img>
+                      {place.placeImageUrl[imgIndex] && (
+                        <img
+                          src={`${BASCI_URL.slice(0, -1)}${
+                            place.placeImageUrl[imgIndex]
+                          }`}
+                          className={`w-full h-full object-cover`}
+                        ></img>
+                      )}
                     </div>
-                  ) : (
-                    <></>
                   );
                 })}
               </div>
@@ -83,7 +93,7 @@ const PlaceDetailPage = () => {
 
             <div className={`flex flex-col flex-grow gap-8`}>
               <div
-                className={`rounded-xl w-full h-[11rem] p-4`}
+                className={`rounded-xl w-full h-[11rem] p-4 overflow-auto`}
                 style={{ boxShadow: "0px 0px 12px 0px rgba(0, 0, 0, 0.25)" }}
               >
                 {place.article}
@@ -112,18 +122,20 @@ const PlaceDetailPage = () => {
                   <span className={`text-xl`}>원</span>
                 </div>
               </div>
-              <div className={`flex justify-end`}>
-                <BaisicButton
-                  content={"사업 계획서 제출하기"}
-                  color={"red"}
-                  type={"button"}
-                  onClickEvent={() =>
-                    navigate(
-                      `/booking/${location.pathname.split("/")[2]}/create`
-                    )
-                  }
-                ></BaisicButton>
-              </div>
+              {!user.is_ceo && (
+                <div className={`flex justify-end`}>
+                  <BaisicButton
+                    content={"사업 계획서 제출하기"}
+                    color={"red"}
+                    type={"button"}
+                    onClickEvent={() =>
+                      navigate(
+                        `/booking/${location.pathname.split("/")[2]}/create`
+                      )
+                    }
+                  ></BaisicButton>
+                </div>
+              )}
             </div>
           </section>
           <section
