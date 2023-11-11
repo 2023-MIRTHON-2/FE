@@ -13,7 +13,7 @@ export default function MainCard({
 }) {
   return (
     <li
-      className={`border-[#11434A] rounded-lg ${
+      className={`border-[#11434A] rounded-lg cursor-pointer ${
         isBasicMode
           ? "w-full max-w-[18.75rem]"
           : "max-w-fit border-[0.1px] card-skew"
