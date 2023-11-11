@@ -112,7 +112,7 @@ const CreatePlacePage = () => {
         dayjs(result.impossibleDate.selection.endDate).unix().toString()
       );
       imgList.map((img) => {
-        formData.append("placeImage", img);
+        formData.append("placeImageUrl", img);
       });
 
       const response = await createPlaceApi(formData);
