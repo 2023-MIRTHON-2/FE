@@ -30,8 +30,8 @@ export default function MainPage() {
   });
 
   return (
-    <main className="flex-row lg:px-[13%]">
-      <section className="pb-32 min-h-[100vh]">
+    <main className="main flex-row lg:px-[13%]">
+      <section className="pb-16 min-h-[100vh]">
         <div data-scroll className="px-10 text-3xl font-bold">
           <h1>가게를 공유하여</h1>
           <h1 className="ml-20 mt-5">함께 성장하세요</h1>
@@ -64,7 +64,7 @@ export default function MainPage() {
           <h1 className="mt-5">시작하는 새로운 사업</h1>
         </div>
       </section>
-      <section className="py-32 min-h-[100vh]">
+      <section className="pb-16 min-h-[100vh]">
         <div>
           <div data-scroll className="flex flex-col items-center sec-title">
             <h1 className="text-3xl font-bold">서울 핫플 5개에 위치한</h1>
@@ -88,7 +88,7 @@ export default function MainPage() {
           </ul>
         </div>
       </section>
-      <section className="py-32 min-h-[100vh]">
+      <section className="pb-32 min-h-[70vh]">
         <div>
           <div className="px-5">
             <div className="main-dialog flex justify-start">
@@ -115,7 +115,7 @@ export default function MainPage() {
           </div>
         </div>
       </section>
-      <section className="py-32">
+      <section className="py-16">
         <div className="ml-10 flex items-end">
           <img className="w-[300px]" src={mainImg.provider} />
           <h1 className="ml-5 mb-10 text-3xl font-semiboldtext-my-green">
