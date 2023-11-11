@@ -46,7 +46,6 @@ export default function LoginPage() {
       .then((response) => {
         // 성공적으로 응답을 받았을 때 실행되는 부분
         const { access, refresh, user } = response.data;
-        console.log(response.data);
         saveUserInfoToLocalStorage(user);
         saveAccessTokenToLocalStorage(access);
         saveRefreshTokenToLocalStorage(refresh);
