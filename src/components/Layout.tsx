@@ -1,20 +1,19 @@
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getUserInfoFromLocalStorage } from "../assets/api/userInfo";
 
 const Layout = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   interface UserInfo {
     id: number;
-    is_ceo: boolean;
+    is_ceo: any;
     realname: string;
     username: string;
   }
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   useEffect(() => {
-    console.log("렌더링!");
     const userInfo = getUserInfoFromLocalStorage();
     if (userInfo) {
       setIsLoggedIn(true);

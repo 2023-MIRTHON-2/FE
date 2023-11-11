@@ -2,8 +2,14 @@ import React, { useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { basicAPI } from "../../assets/api/core";
 import { getIsDuplicatedApi, postJoinCEOApi } from "../../assets/api/join";
+import {
+  saveAccessTokenToLocalStorage,
+  saveRefreshTokenToLocalStorage,
+} from "../../assets/api/token";
+import { saveUserInfoToLocalStorage } from "../../assets/api/userInfo";
 import BaisicButton from "../../components/button/BaisicButton";
 import LoginButton from "../../components/button/LoginButton";
+import Divider from "../../components/Divider";
 import LoginInput from "../../components/form/LoginInput";
 import { MESSAGE } from "../../constants/message";
 
@@ -105,15 +111,14 @@ export default function JoinCeoPage() {
       join.name,
       join.phone
     )
-      .then((response) => {
-        // 성공적으로 응답을 받았을 때 실행되는 부분
+      .then(async (response) => {
         const { access, refresh } = response.data.token;
         const { user } = response.data;
         console.log("응답 데이터:", response.data);
         saveAccessTokenToLocalStorage(access);
         saveRefreshTokenToLocalStorage(refresh);
         saveUserInfoToLocalStorage(user);
-        handleIsLoggedIn();
+        await handleIsLoggedIn();
         navigate("/");
       })
       .catch((error) => {
@@ -132,8 +137,9 @@ export default function JoinCeoPage() {
       <div className="py-10 text-center">
         <h1 className="font-extrabold text-4xl">회원가입</h1>
       </div>
+      <Divider />
       <form
-        className="flex flex-col w-[400px] py-6 gap-5"
+        className="flex flex-col w-[400px] py-10 gap-5"
         onSubmit={handleJoinSubmit}
       >
         <LoginInput

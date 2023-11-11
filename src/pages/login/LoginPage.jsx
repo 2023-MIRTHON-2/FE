@@ -9,6 +9,7 @@ import {
   saveRefreshTokenToLocalStorage,
 } from "../../assets/api/token";
 import { saveUserInfoToLocalStorage } from "../../assets/api/userInfo";
+import Divider from "../../components/Divider";
 
 export default function LoginPage() {
   const [login, setLogin] = useState({
@@ -71,8 +72,9 @@ export default function LoginPage() {
       <div className="py-10">
         <h1 className="font-extrabold text-4xl">로그인</h1>
       </div>
+      <Divider />
       <form
-        className="w-[400px] flex flex-col gap-5 py-6"
+        className="w-[400px] flex flex-col gap-5 py-8"
         onSubmit={handleLoginSubmit}
       >
         <LoginInput
@@ -101,6 +103,7 @@ export default function LoginPage() {
           />
         </div>
       </form>
+      <Divider />
       <div className="py-10 flex text-my-green">
         <span>바로 여기의 회원이 아니신가요?</span>
         <h1 className="ml-6 underline">

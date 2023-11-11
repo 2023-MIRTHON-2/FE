@@ -2,7 +2,17 @@ import { Link } from "react-router-dom";
 import { logo } from "../assets/images";
 import Logout from "./Logout";
 
-export default function Header({ isCEO, isLoggedIn, handleIsLogout }) {
+interface HeaderProps {
+  isCEO: boolean;
+  isLoggedIn: boolean;
+  handleIsLogout: () => void;
+}
+
+export default function Header({
+  isCEO,
+  isLoggedIn,
+  handleIsLogout,
+}: HeaderProps) {
   return (
     <header
       className="w-1/1 py-1 px-20 lg:px-60 flex justify-between items-center shadow-md bg-white"
