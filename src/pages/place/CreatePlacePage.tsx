@@ -91,21 +91,6 @@ const CreatePlacePage = () => {
     [methods]
   );
 
-  //   {
-  //     "placeName": "예람",
-  //     "licenseNum": "5765757",
-  //     "lease": "C:\\fakepath\\(홈페이지 사용 가이드-학생용) 1.pdf",
-  //     "article": "메모",
-  //     "cost": "23423423",
-  //     "impossibleDate": {
-  //         "selection": {
-  //             "startDate": "2023-11-04T15:00:00.000Z",
-  //             "endDate": "2023-11-29T15:00:00.000Z",
-  //             "key": "selection"
-  //         }
-  //     }
-  // }
-
   const submitPlaceForm = useCallback(
     async (result: any) => {
       console.log(result);
@@ -116,6 +101,7 @@ const CreatePlacePage = () => {
       formData.append("location", filterLocationList[0]);
       formData.append("article", result.article);
       formData.append("cost", result.cost);
+      formData.append("lease", "");
       formData.append(
         "impossibleDate",
         dayjs(result.impossibleDate.selection.startDate).unix().toString()
@@ -124,14 +110,11 @@ const CreatePlacePage = () => {
         "impossibleDate",
         dayjs(result.impossibleDate.selection.endDate).unix().toString()
       );
-
       imgList.map((img) => {
         formData.append("placeImage", img);
       });
 
-      const response = await createPlaceApi(formData);
-
-      console.log(result, formData);
+      await createPlaceApi(formData);
     },
     [imgList, methods]
   );
