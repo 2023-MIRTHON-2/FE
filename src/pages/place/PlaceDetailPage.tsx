@@ -122,7 +122,7 @@ const PlaceDetailPage = () => {
                   <span className={`text-xl`}>원</span>
                 </div>
               </div>
-              {!user.is_ceo && (
+              {user && !user.is_ceo && (
                 <div className={`flex justify-end`}>
                   <BaisicButton
                     content={"사업 계획서 제출하기"}
