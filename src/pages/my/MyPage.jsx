@@ -11,7 +11,7 @@ import MainCard from "../../components/MainCard";
 
 export default function MyPage() {
   const [user, setUser] = useState({});
-  console.log(user);
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
