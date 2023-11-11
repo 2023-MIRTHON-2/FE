@@ -9,6 +9,7 @@ export default function MainCard({
   price,
   src,
   isBasicMode = false,
+  size,
 }) {
   return (
     <li
@@ -16,14 +17,14 @@ export default function MainCard({
         isBasicMode
           ? "w-full max-w-[18.75rem]"
           : "max-w-fit border-[0.1px] card-skew"
-      }`}
+      } ${size}`}
       style={{
         boxShadow: `${
           isBasicMode ? "0px 0px 4px 3px rgba(0, 0, 0, 0.25)" : ""
         }`,
       }}
     >
-      <img className="image-quality-improve " src={src} alt="공유공간 카드" />
+      <img className="image-quality-improve" src={src} alt="공유공간 카드" />
       <div className="px-5 py-6">
         <header className={`flex gap-1`}>
           <Chip

@@ -7,6 +7,7 @@ const logo = {
 const userImg = {
   user: "/images/header-user-login.png",
   ceo: "/images/header-ceo-login.png",
+  storeEmpty: "/images/store-empty.png",
 };
 const mainImg = {
   place1: "/images/mainPage/place-1.png",
@@ -24,7 +25,7 @@ const mainImg = {
 
 const JoinImg = {
   storeGreen: "/images/joinPage/store-green.png",
-  storeRed: "images/joinPage/store-red.png",
+  storeRed: "/images/joinPage/store-red.png",
 };
 
 const DividerImg = {
