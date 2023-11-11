@@ -6,12 +6,12 @@ import { JoinImg, mainImg, userImg } from "../../assets/images";
 import LoginButton from "../../components/button/LoginButton";
 import Divider from "../../components/Divider";
 import MyCards from "../../components/info/MyCards";
+import MyPlans from "../../components/info/MyPlans";
 import User from "../../components/info/User";
 import MainCard from "../../components/MainCard";
 
 export default function MyPage() {
   const [user, setUser] = useState({});
-  console.log(user);
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -24,7 +24,7 @@ export default function MyPage() {
     };
     fetchUserInfo();
   }, []);
-
+  console.log(user);
   const userLabel = {
     realname: "이름",
     phone: "전화번호",
@@ -36,18 +36,13 @@ export default function MyPage() {
 
   const userField = ["realname", "phone", "username"];
   const userPlaceField = ["licenseNum", "business", "location"];
-  const color = user.is_ceo ? "my-green" : "my-light-red";
+  const color = user.is_ceo ? "my-green" : "my-red";
   const navigate = useNavigate();
 
   return (
     <section className={`flex flex-col py-10 text-${color}`}>
       <div className="relative pb-20 w-full">
         <h1 className="font-bold text-4xl text-center"> 마이 페이지</h1>
-        <Link to="#">
-          <span className="absolute bottom-0 right-[7%] underline">
-            수정하기
-          </span>
-        </Link>
       </div>
       <Divider color={color} />
       <div className="px-[20%] xl:px-[28%] py-10 font-semibold text-xl">
@@ -70,7 +65,9 @@ export default function MyPage() {
       {user.is_ceo && (
         <div className="py-20">
           <div className="px-[10%] relative h-[120px]">
-            <h1 className="font-bold text-2xl">등록된 공유 공간</h1>
+            <h1 className={`font-bold text-2xl text-${color}`}>
+              등록된 공유 공간
+            </h1>
             <div className="absolute bottom-0 right-[5%]">
               <LoginButton
                 content="공유공간 추가 등록"
@@ -87,9 +84,16 @@ export default function MyPage() {
           </ul>
         </div>
       )}
-      <div className="px-[10%] py-20 ">
-        <h1 className="font-bold text-2xl">나의 계약 내역</h1>
-      </div>
+      {/* {user.placeList.length > 0 && ( */}
+      <>
+        <div className="px-[10%] py-10">
+          <h1 className={`font-bold text-2xl text-${color}`}>나의 계약 내역</h1>
+        </div>
+        <div className="px-[9%]">
+          <MyPlans />
+        </div>
+      </>
+      {/* )} */}
     </section>
   );
 }
