@@ -67,17 +67,19 @@ img {
   transition-delay: 0.5s;
 }
 
-.ul-cards[data-scroll] {
+.main-card[data-scroll]:first-child {
   transition-delay: 0.8s;
 }
-.ul-cards[data-scroll="in"] {
-  transform: translateY(0rem) scale(1);
+
+.main-card[data-scroll]:nth-child(2) {
+  transition-delay: 1s;
 }
-.ul-cards:first-child {
-  background-color: red;
+.main-card[data-scroll]:nth-child(3) {
+  transition-delay: 1.2s;
 }
+
 .esg[data-scroll] {
-  transition-delay: 0.3s;
+  transition-delay: 0.2s;
 }
 
 .main-dialog {

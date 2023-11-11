@@ -14,6 +14,7 @@ export default {
         "my-yellow": "#CD9300",
         "my-purple": "#282085",
         "my-error": "#FF6550",
+        "my-font-red": "#76291E",
       },
     },
     mode: "jit",
