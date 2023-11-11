@@ -1,6 +1,8 @@
 import React from "react";
+import { basicAPI } from "../../assets/api/core";
 import { mainImg, userImg } from "../../assets/images";
 import MainCard from "../MainCard";
+import { BASCI_URL } from "../../assets/api/core";
 
 export default function MyCards({ placeList }) {
   const maxItemsToShow = 6;
@@ -29,7 +31,7 @@ export default function MyCards({ placeList }) {
       {placeList.map((item) => (
         <MainCard
           key={item.id}
-          src={item.placeImageUrl}
+          src={`${BASCI_URL.slice(0, -1)}${item.placeImageUrl}`}
           location={item.location}
           category={item.business}
           title={item.placeName}

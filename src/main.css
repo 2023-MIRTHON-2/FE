@@ -93,10 +93,6 @@ img {
   border: 1px solid rgb(17, 67, 74);
   transform: translateY(-0.5rem) scale(1.1);
 }
-.card-skew {
-  perspective: 100px;
-  transition: 1s;
-}
 
 .main .card-skew:first-child {
   box-shadow: -52px 38px 32px -22px rgba(0, 0, 0, 0.75);
@@ -146,6 +142,14 @@ img {
 
   .main .card-skew:last-child {
     transform: rotateZ(10deg) rotateX(-20deg) translateY(-10px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header-top {
+    padding: 0 30px;
+  }
+  .main {
   }
 }
 

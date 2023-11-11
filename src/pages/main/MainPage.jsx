@@ -51,12 +51,15 @@ export default function MainPage() {
   }, []);
 
   return (
-    <main className="main flex-row lg:px-[13%]">
+    <main className="main flex-col lg:px-[13%]">
       <>
-        <section className="pb-16 min-h-[100vh]">
-          <div data-scroll className="px-10 text-3xl font-bold">
+        <section className="pb-16 min-h-[100vh] ">
+          <div
+            data-scroll
+            className="text-center sm:text-left text-3xl font-bold"
+          >
             <h1>가게를 공유하여</h1>
-            <h1 className="ml-20 mt-5">함께 성장하세요</h1>
+            <h1 className=" sm:ml-20 mt-5">함께 성장하세요</h1>
           </div>
           <div className="mt-10 relative flex justify-center items-center">
             <h1 className="absolute top-[calc(50%-100px)] left-[calc(50%-160px)] text-5xl font-bold text-my-green">
@@ -69,7 +72,7 @@ export default function MainPage() {
           </div>
           <div className="mt-12 px-10 flex flex-col items-end font-bold text-3xl ">
             <h1 className="mr-20">
-              <span className="font-extrabold text-5xl">
+              <span className="font-extrabold text-[26px] sm:text-5xl">
                 <TypeIt
                   options={{
                     spped: 100,
@@ -81,9 +84,9 @@ export default function MainPage() {
                   바로 여기
                 </TypeIt>
               </span>
-              <span className="">에서</span>
+              <span className="whitespace-nowrap sm:ml-0">에서</span>
             </h1>
-            <h1 className="mt-5">시작하는 새로운 사업</h1>
+            <h1 className="mt-5 whitespace-nowrap">시작하는 새로운 사업</h1>
           </div>
         </section>
         <section className="pb-16 min-h-[100vh]">
@@ -94,7 +97,7 @@ export default function MainPage() {
                 공유공간을 대여해보세요!
               </h1>
             </div>
-            <ul className="mt-60 flex justify-between ul-cards">
+            <ul className="mt-60 sm:flex sm:justify-between sm:ul-cards">
               {data &&
                 data.map((item) => (
                   <MainCard
@@ -141,7 +144,7 @@ export default function MainPage() {
             </div>
           </div>
         </section>
-        <section className="py-16">
+        <section className="py-32">
           <div className="ml-10 flex items-end">
             <img data-scroll className="w-[300px]" src={mainImg.provider} />
             <h1 className="ml-5 mb-10 text-3xl font-semiboldtext-my-green">
@@ -186,10 +189,12 @@ export default function MainPage() {
         </section>
         <section className="py-32">
           <div className="mb-10 ">
-            <h1 className="mb-32 text-2xl font-semibold text-center tracking-wide">
+            <h1 className="mb-32 text-2xl font-semibold text-center tracking-wide flex justify-center items-center">
               <span className="font-extrabold">지속 가능한 미래</span>
               <span className="">를 위해서</span>
-              <span className="ml-2 text-[28px] text-[#11434A]">바로 여기</span>
+              <span className="ml-4 font-extrabold text-4xl text-[#11434A]">
+                바로 여기
+              </span>
             </h1>
             <div className="flex flex-col">
               <img src={mainImg.environment} />
