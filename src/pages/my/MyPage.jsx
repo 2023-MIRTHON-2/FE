@@ -38,7 +38,7 @@ export default function MyPage() {
 
   const userField = ["realname", "phone", "username"];
   const userPlaceField = ["licenseNum", "business", "location"];
-  const color = user.is_ceo ? "my-green" : "my-font-red";
+  const color = user.is_ceo ? "my-green" : "my-red";
   const navigate = useNavigate();
 
   if (!loading)
@@ -50,7 +50,12 @@ export default function MyPage() {
         <Divider color={color} />
         <div className="px-[20%] xl:px-[28%] py-10 font-semibold text-xl">
           {userField.map((field, index) => (
-            <User label={userLabel[field]} value={user[field]} color={color} />
+            <User
+              key={index}
+              label={userLabel[field]}
+              value={user[field]}
+              color={color}
+            />
           ))}
         </div>
         <Divider color={color} />
@@ -58,6 +63,7 @@ export default function MyPage() {
           <div className="px-[20%] xl:px-[28%] py-10  font-semibold text-xl">
             {userPlaceField.map((field, index) => (
               <User
+                key={index}
                 label={userLabel[field]}
                 value={user.placeList[0][field]}
                 color={color}
