@@ -95,6 +95,7 @@ const PlaceListPage = () => {
               price={place.cost}
               src={place.placeImageUrl}
               isBasicMode={true}
+              size=""
             ></MainCard>
           </div>
         ))}
