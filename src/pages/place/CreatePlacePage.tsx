@@ -10,6 +10,7 @@ import { createPlaceApi, validateLicenseNumApi } from "../../assets/api/place";
 import FormInputPhoto from "../../components/form/FormInputPhoto";
 import BaisicButton from "../../components/button/BaisicButton";
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
 
 const makeBasicSectionFromData = (submitEvent: any): formInfo[] => {
   return [
@@ -72,6 +73,7 @@ const makePlaceSectionFromData = (needImpossibleDate: boolean): formInfo[] => {
 };
 
 const CreatePlacePage = () => {
+  const navigate = useNavigate();
   const methods = useForm({ mode: "onChange" });
 
   const [filterBusinessList, setFilterBusinessList] = useState<string[]>([]);
@@ -93,7 +95,6 @@ const CreatePlacePage = () => {
 
   const submitPlaceForm = useCallback(
     async (result: any) => {
-      console.log(result);
       const formData = new FormData();
       formData.append("placeName", result.placeName);
       formData.append("licenseNum", result.licenseNum);
@@ -114,7 +115,8 @@ const CreatePlacePage = () => {
         formData.append("placeImage", img);
       });
 
-      await createPlaceApi(formData);
+      const response = await createPlaceApi(formData);
+      navigate(`/place/${response.data.id}`);
     },
     [imgList, methods]
   );
