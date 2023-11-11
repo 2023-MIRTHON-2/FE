@@ -114,35 +114,16 @@ img {
   font-size: 12px;
 }
 
-@media screen and (max-width: 1080px) {
-  .main .card-skew:first-child {
-    transform: rotateZ(-10deg) rotateX(-20deg) translateX(-30px)
-      translateY(-10px);
-  }
-
-  .main .card-skew:nth-child(2) {
-    transform: rotateX(-10deg) translateY(-80px);
-  }
-
-  .main .card-skew:last-child {
-    transform: rotateZ(10deg) rotateX(-20deg) translateX(30px) translateY(-10px);
-  }
+.main .card-skew:first-child {
+  transform: rotateZ(-10deg) rotateX(-20deg) translateX(-30px) translateY(-10px);
 }
-@media screen and (min-width: 1080px) {
-  .main .card-skew:first-child {
-    transform: rotateZ(-10deg) rotateX(-20deg) translateY(-10px);
-  }
 
-  .main .card-skew:nth-child(2) {
-    transform: rotateX(-10deg) translateY(-80px);
-    box-shadow: 2px 33px 64px -5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 2px 33px 64px -5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 2px 33px 64px -5px rgba(0, 0, 0, 0.75);
-  }
+.main .card-skew:nth-child(2) {
+  transform: rotateX(-10deg) translateY(-80px);
+}
 
-  .main .card-skew:last-child {
-    transform: rotateZ(10deg) rotateX(-20deg) translateY(-10px);
-  }
+.main .card-skew:last-child {
+  transform: rotateZ(10deg) rotateX(-20deg) translateX(30px) translateY(-10px);
 }
 
 @media screen and (max-width: 400px) {

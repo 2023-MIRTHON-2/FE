@@ -47,7 +47,9 @@ export default function MainCard({
         </header>
         <main className="mt-6">
           <h1 className="text-xl font-bold">{title}</h1>
-          <p className="text-sm mt-3 font-light">{subTitle}</p>
+          <p className="text-sm mt-3 font-light line-clamp-2">
+            {subTitle.trim()}
+          </p>
         </main>
         <aside className="mt-8 text-xl flex justify-end">
           <span className="mr-1">월</span>
