@@ -12,7 +12,7 @@ export default function MyPlans({
   const navigate = useNavigate();
   return (
     <div
-      className="px-10 py-6 border-2 shadow-md rounded-3xl cursor-pointer"
+      className="mb-10 px-10 py-6 border-2 shadow-md rounded-3xl cursor-pointer"
       onClick={() => navigate(`/booking/detail/${id}`)}
     >
       <div className="flex justify-between items-center">
