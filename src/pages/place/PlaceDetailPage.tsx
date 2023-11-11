@@ -41,7 +41,10 @@ const PlaceDetailPage = () => {
             </div>
             <div className={`flex gap-2 items-center`}>
               <CommunicationIcon />
-              <div className={`font-bold text-xl`}>{place.placeName}</div>
+              <div className={`font-bold text-xl`}>{`${place.phone.slice(
+                0,
+                3
+              )}-${place.phone.slice(3, 7)}-${place.phone.slice(7, 11)}`}</div>
             </div>
           </section>
           <section className={`flex gap-9 py-[4rem] px-7 basic-border-bottom`}>

@@ -8,5 +8,6 @@ export type PlaceInfoType = {
   location: string;
   article: string;
   cost: number;
+  phone: string;
   impossibleDate_list?: number[];
 };
