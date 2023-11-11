@@ -16,7 +16,6 @@ interface props {
     content: string;
     onClickEvent: (value: any) => void | null;
   } | null;
-  accept?: string | null;
 }
 
 const FormInput = ({
@@ -26,7 +25,6 @@ const FormInput = ({
   disabled = false,
   required = false,
   endDecorator = null,
-  accept = null,
 }: props) => {
   return (
     <FormInputStyle>
