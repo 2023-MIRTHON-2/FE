@@ -5,7 +5,7 @@ import BookingSection, {
 import { InputType } from "../../components/form/FormInput";
 import BaisicButton from "../../components/button/BaisicButton";
 import { useCallback } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { createBookingApi } from "../../assets/api/booking";
 import dayjs from "dayjs";
 import Title from "../../components/common/Title";
@@ -34,7 +34,7 @@ const bookingSectionFromData: formInfo[] = [
   {
     formType: "input",
     subTitle: "업종",
-    name: "category",
+    name: "business",
     placeholder: "자신의 업종을 입력해주세요.",
     type: "text" as InputType,
     disabled: false,
@@ -73,6 +73,7 @@ const questionSectionFromData: formInfo[] = [
   },
 ];
 const CreateBookingPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const methods = useForm({ mode: "onChange" });
 
@@ -89,8 +90,8 @@ const CreateBookingPage = () => {
       };
       const response = await createBookingApi(planId, reqBody);
 
-      if (response.status === 200) {
-        //페이지 이동
+      if (response.status >= 200) {
+        navigate("/my");
       }
     },
     [location, methods]

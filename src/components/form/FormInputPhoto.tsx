@@ -1,6 +1,6 @@
 import { Controller } from "react-hook-form";
 import PictureIcon from "../../assets/svg/PictureIcon";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 interface props {
   name: string;
@@ -11,10 +11,6 @@ interface props {
 const FormInputPhoto = ({ name, required, saveImageEvent }: props) => {
   const [imgFile, setImgFile] = useState<string | null>(null);
   const imgRef = useRef();
-
-  // useEffect(() => {
-  //   imgFile && saveImageEvent(imgFile);
-  // }, [imgFile]);
 
   const saveImgFile = () => {
     const file = imgRef && imgRef.current ? imgRef.current.files[0] : null;

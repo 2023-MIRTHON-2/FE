@@ -114,7 +114,11 @@ const PlaceDetailPage = () => {
                   content={"사업 계획서 제출하기"}
                   color={"red"}
                   type={"button"}
-                  onClickEvent={() => console.log("page 이동")}
+                  onClickEvent={() =>
+                    navigate(
+                      `/booking/${location.pathname.split("/")[2]}/create`
+                    )
+                  }
                 ></BaisicButton>
               </div>
             </div>

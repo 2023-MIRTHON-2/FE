@@ -12,38 +12,38 @@ const BookingDetailPage = () => {
       Number(location.pathname.split("/")[3])
     );
 
-    if (response.status === 200) {
+    if (response.status >= 200) {
       setBooking([
         [
           {
             title: "이름",
-            content: response.name,
+            content: response.data.name,
           },
           {
             title: "전화번호",
-            content: response.phone,
+            content: response.data.phone,
           },
         ],
         [
           {
             title: "업종",
-            content: response.bussiness,
+            content: response.data.business,
           },
           {
             title: "희망 계약 기간",
-            content: `${response.startDate} - ${response.endDate}`,
+            content: `${response.data.startDate} - ${response.data.endDate}`,
           },
         ],
         [
           {
             title: "",
-            content: response.information,
+            content: response.data.information,
           },
         ],
         [
           {
             title: "",
-            content: response.inquiry,
+            content: response.data.inquiry,
           },
         ],
       ]);
