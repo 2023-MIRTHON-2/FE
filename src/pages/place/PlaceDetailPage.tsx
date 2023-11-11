@@ -7,18 +7,17 @@ import BasicCalendar from "../../components/BasicCalendar";
 import { useCallback, useEffect, useState } from "react";
 import { getPlaceApi } from "../../assets/api/place";
 import { PlaceInfoType } from "../../assets/type";
+import { BASCI_URL } from "../../assets/api/core";
 
 const PlaceDetailPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [place, setPlace] = useState<PlaceInfoType | null>(null);
+  const [pickedPictureIndex, setPickedPictureIndex] = useState(0);
 
   const getPlaceData = useCallback(async () => {
     const response = await getPlaceApi(Number(location.pathname.split("/")[2]));
-
-    if (response.status === 200) {
-      setPlace(response);
-    }
+    setPlace(response);
   }, [location]);
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const PlaceDetailPage = () => {
   console.log(location, place);
 
   return (
-    <article className={``}>
+    <article>
       {place && (
         <>
           <section
@@ -46,18 +45,36 @@ const PlaceDetailPage = () => {
             </div>
           </section>
           <section className={`flex gap-9 py-[4rem] px-7 basic-border-bottom`}>
-            <div className={`flex flex-col w-fit gap-6`}>
+            <div className={`flex flex-col min-w-[40%] w-fit gap-6`}>
               <div
-                className={`felx flex-grow h-[27.5rem] rounded-2xl bg-gray-300`}
-              ></div>
+                className={`felx flex-grow h-[27.5rem] rounded-2xl overflow-hidden bg-gray-300`}
+              >
+                <img
+                  src={`${BASCI_URL.slice(0, -1)}${
+                    place.placeImageUrl[pickedPictureIndex]
+                  }`}
+                  className={`w-full h-full object-cover`}
+                ></img>
+              </div>
               <div className={`flex gap-4`}>
-                {[0, 1, 2, 3].map((imgIndex) => (
-                  <div className={`w-32 h-32  rounded-2xl bg-gray-300`}>
-                    {place.placeImageUrl[imgIndex]
-                      ? place.placeImageUrl[imgIndex]
-                      : "ㅎㅎ"}
-                  </div>
-                ))}
+                {[0, 1, 2, 3].map((imgIndex) => {
+                  return place.placeImageUrl[imgIndex] ? (
+                    <div
+                      className={`w-32 h-32 rounded-2xl bg-gray-300 overflow-hidden`}
+                      onClick={() => setPickedPictureIndex(imgIndex)}
+                      key={imgIndex}
+                    >
+                      <img
+                        src={`${BASCI_URL.slice(0, -1)}${
+                          place.placeImageUrl[imgIndex]
+                        }`}
+                        className={`w-full h-full object-cover`}
+                      ></img>
+                    </div>
+                  ) : (
+                    <></>
+                  );
+                })}
               </div>
             </div>
 
@@ -97,7 +114,11 @@ const PlaceDetailPage = () => {
                   content={"사업 계획서 제출하기"}
                   color={"red"}
                   type={"button"}
-                  onClickEvent={() => console.log("page 이동")}
+                  onClickEvent={() =>
+                    navigate(
+                      `/booking/${location.pathname.split("/")[2]}/create`
+                    )
+                  }
                 ></BaisicButton>
               </div>
             </div>
