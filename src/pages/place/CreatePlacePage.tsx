@@ -6,8 +6,10 @@ import BookingSection, {
 import { FormProvider, useForm } from "react-hook-form";
 import FilteringSection from "../../components/category/FilteringSection";
 import FormTextArea from "../../components/form/FormTextArea";
-import { validateLicenseNumApi } from "../../assets/api/place";
+import { createPlaceApi, validateLicenseNumApi } from "../../assets/api/place";
 import FormInputPhoto from "../../components/form/FormInputPhoto";
+import BaisicButton from "../../components/button/BaisicButton";
+import dayjs from "dayjs";
 
 const makeBasicSectionFromData = (submitEvent: any): formInfo[] => {
   return [
@@ -76,6 +78,7 @@ const CreatePlacePage = () => {
   const [filterLocationList, setFilterLocationList] = useState<string[]>([]);
   const [placeSectionFromData, setPlaceSectionFromData] = useState<any[]>([]);
   const [needImpossibleDate, setNeedImpossibleDate] = useState<boolean>(true);
+  const [imgList, setImgList] = useState<string[]>([]);
 
   const submitLicenseNum = useCallback(
     async (value: number) => {
@@ -88,11 +91,54 @@ const CreatePlacePage = () => {
     [methods]
   );
 
+  //   {
+  //     "placeName": "예람",
+  //     "licenseNum": "5765757",
+  //     "lease": "C:\\fakepath\\(홈페이지 사용 가이드-학생용) 1.pdf",
+  //     "article": "메모",
+  //     "cost": "23423423",
+  //     "impossibleDate": {
+  //         "selection": {
+  //             "startDate": "2023-11-04T15:00:00.000Z",
+  //             "endDate": "2023-11-29T15:00:00.000Z",
+  //             "key": "selection"
+  //         }
+  //     }
+  // }
+
+  const submitPlaceForm = useCallback(
+    async (result: any) => {
+      console.log(result);
+      const formData = new FormData();
+      formData.append("placeName", result.placeName);
+      formData.append("licenseNum", result.licenseNum);
+      formData.append("business", filterBusinessList[0]);
+      formData.append("location", filterLocationList[0]);
+      formData.append("article", result.article);
+      formData.append("cost", result.cost);
+      formData.append(
+        "impossibleDate",
+        dayjs(result.impossibleDate.selection.startDate).unix().toString()
+      );
+      formData.append(
+        "impossibleDate",
+        dayjs(result.impossibleDate.selection.endDate).unix().toString()
+      );
+
+      imgList.map((img) => {
+        formData.append("placeImage", img);
+      });
+
+      const response = await createPlaceApi(formData);
+
+      console.log(result, formData);
+    },
+    [imgList, methods]
+  );
+
   useEffect(() => {
     setPlaceSectionFromData(makePlaceSectionFromData(needImpossibleDate));
   }, [needImpossibleDate]);
-
-  const [imgList, setImgList] = useState<string[]>([]);
 
   const saveImage = useCallback(
     (imgStr: string) => {
@@ -104,16 +150,6 @@ const CreatePlacePage = () => {
     },
     [imgList]
   );
-  // console.log("imgList", imgList);
-
-  // useEffect(() => {
-  //   console.log("pic", methods.getValues("pic0"));
-  // }, [
-  //   methods.watch("pic0"),
-  //   methods.watch("pic1"),
-  //   methods.watch("pic2"),
-  //   methods.watch("pic3"),
-  // ]);
 
   return (
     <article className={`flex w-full flex-col gap-10`}>
@@ -185,7 +221,14 @@ const CreatePlacePage = () => {
               </div>
             </div>
 
-            <div></div>
+            <div className={`flex w-full justify-center pt-10`}>
+              <BaisicButton
+                content={"공간 등록하기"}
+                color={"green"}
+                type={"button"}
+                onClickEvent={methods.handleSubmit(submitPlaceForm)}
+              ></BaisicButton>
+            </div>
           </div>
         </form>
       </FormProvider>

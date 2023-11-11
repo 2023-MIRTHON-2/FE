@@ -31,3 +31,23 @@ export const validateLicenseNumApi = async (licenseNum: number) => {
     });
   return data;
 };
+
+export const createPlaceApi = async (reqBody: any) => {
+  let url = `places/create/`;
+  const config = {
+    headers: {
+      // Authorization: ...,  // 토큰 넣어주기
+      "Content-Type": "multipart/form-data", // 데이터 형식 지정
+    },
+  };
+
+  const data = await basicAPI
+    .post(url, reqBody, config)
+    .then((response) => {
+      return response;
+    })
+    .catch((response) => {
+      return response;
+    });
+  return data;
+};

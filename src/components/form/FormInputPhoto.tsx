@@ -12,12 +12,13 @@ const FormInputPhoto = ({ name, required, saveImageEvent }: props) => {
   const [imgFile, setImgFile] = useState<string | null>(null);
   const imgRef = useRef();
 
-  useEffect(() => {
-    imgFile && saveImageEvent(imgFile);
-  }, [imgFile]);
+  // useEffect(() => {
+  //   imgFile && saveImageEvent(imgFile);
+  // }, [imgFile]);
 
   const saveImgFile = () => {
     const file = imgRef && imgRef.current ? imgRef.current.files[0] : null;
+    saveImageEvent(file);
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
