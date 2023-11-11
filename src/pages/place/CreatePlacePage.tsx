@@ -6,8 +6,8 @@ import BookingSection, {
 import { FormProvider, useForm } from "react-hook-form";
 import FilteringSection from "../../components/category/FilteringSection";
 import FormTextArea from "../../components/form/FormTextArea";
-import BaisicButton from "../../components/button/BaisicButton";
 import { validateLicenseNumApi } from "../../assets/api/place";
+import FormInputPhoto from "../../components/form/FormInputPhoto";
 
 const makeBasicSectionFromData = (submitEvent: any): formInfo[] => {
   return [
@@ -92,6 +92,29 @@ const CreatePlacePage = () => {
     setPlaceSectionFromData(makePlaceSectionFromData(needImpossibleDate));
   }, [needImpossibleDate]);
 
+  const [imgList, setImgList] = useState<string[]>([]);
+
+  const saveImage = useCallback(
+    (imgStr: string) => {
+      if (imgStr) {
+        const _imgList = [...imgList];
+        _imgList.push(imgStr);
+        setImgList(_imgList);
+      }
+    },
+    [imgList]
+  );
+  // console.log("imgList", imgList);
+
+  // useEffect(() => {
+  //   console.log("pic", methods.getValues("pic0"));
+  // }, [
+  //   methods.watch("pic0"),
+  //   methods.watch("pic1"),
+  //   methods.watch("pic2"),
+  //   methods.watch("pic3"),
+  // ]);
+
   return (
     <article className={`flex w-full flex-col gap-10`}>
       <Title title={"공간 정보 등록"}></Title>
@@ -142,10 +165,14 @@ const CreatePlacePage = () => {
 
             <div className={`flex gap-8`}>
               <div className={`grid grid-cols-2 flex-grow flex-wrap gap-4`}>
-                <div className={` bg-my-light-green rounded-xl`}></div>
-                <div className={` bg-my-light-green rounded-xl`}></div>
-                <div className={` bg-my-light-green rounded-xl`}></div>
-                <div className={` bg-my-light-green rounded-xl`}></div>
+                {[0, 1, 2, 3].map((picIndex) => (
+                  <FormInputPhoto
+                    key={picIndex}
+                    name={`pic${picIndex}`}
+                    required={false}
+                    saveImageEvent={(str) => saveImage(str)}
+                  ></FormInputPhoto>
+                ))}
               </div>
               <div className={`flex-grow`}>
                 <FormTextArea
