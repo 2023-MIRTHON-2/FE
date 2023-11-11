@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface FormTextareaStyleProps {
-  minWidth: string | null;
-}
-
 export const InputStyle = styled.div`
   > div,
   > input {
