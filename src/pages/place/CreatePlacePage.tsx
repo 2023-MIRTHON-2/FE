@@ -101,7 +101,10 @@ const CreatePlacePage = () => {
       formData.append("business", filterBusinessList[0]);
       formData.append("location", filterLocationList[0]);
       formData.append("article", result.article);
-      formData.append("cost", result.cost);
+      formData.append(
+        "cost",
+        result.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
       formData.append("lease", "");
       formData.append(
         "impossibleDate",
