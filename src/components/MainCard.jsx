@@ -15,7 +15,7 @@ export default function MainCard({
   return (
     <li
       {...(dataScroll ? { "data-scroll": "" } : {})}
-      className={`main-card border-[#11434A] rounded-lg cursor-pointer ${
+      className={`main-card min-h-[420px] border-[#11434A] rounded-lg cursor-pointer ${
         isBasicMode
           ? "w-full max-w-[18.75rem]"
           : "max-w-fit border-[0.1px] card-skew"
