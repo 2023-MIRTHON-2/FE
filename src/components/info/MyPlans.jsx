@@ -21,7 +21,7 @@ export default function MyPlans({
         </h1>
       </div>
       <div className="mt-6 flex justify-between items-center font-bold text-xl">
-        <h1 className="ml-3 w-[40%] border-r-[1px] border-black">{ceoId}</h1>
+        <h1 className="ml-3 w-[40%] border-r-[1px] border-black">{placeId}</h1>
         <h2 className="w-[20%]">공간이용자</h2>
         <h2 className="w-[30%] tracking-wider font-semibold">{renterId}</h2>
       </div>
