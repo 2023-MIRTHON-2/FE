@@ -4,37 +4,61 @@ import Header from "../../components/Header";
 import MainCard from "../../components/MainCard";
 import ScrollOut from "scroll-out";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/pagination";
-
-import { Pagination } from "swiper/modules";
-
 import { JSON_PATH } from "../../constants/path";
 import { logo, mainImg } from "../../assets/images";
 import { Link } from "react-router-dom";
-import { useOutletContext } from "../../../node_modules/react-router-dom/dist/index";
+import { FreeMode, Scrollbar, Mousewheel, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
 
 export default function MainPage() {
-  const [data, setData] = useState();
+  const data = [
+    {
+      key: 1,
+      src: "/images/mainPage/place-1.png",
+      location: "성수",
+      category: "요식업",
+      title: "치즈 다이닝 in 성수",
+      subTitle: "서울숲 옆 골목에 위치한 양식 전문점 입니다.",
+      price: "840,000",
+    },
+    {
+      key: 2,
+      src: "/images/mainPage/place-2.png",
+      location: "성수",
+      category: "주점",
+      title: "와인 인더스트리",
+      subTitle: "넓은 식당 내부를 갖고있는 와인 바 입니다.",
+      price: "739,000",
+    },
+    {
+      key: 3,
+      src: "/images/mainPage/place-3.png",
+      location: "성수",
+      category: "제조업",
+      title: "옐로우 랩",
+      subTitle: "인쇄물 제작를 전문으로 하는 사무실 입니다.",
+      price: "458,000",
+    },
+  ];
 
   useEffect(() => {
-    fetch(JSON_PATH.CARDS)
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    ScrollOut({
+      targets: "[data-scroll]",
+      once: true,
+    });
   }, []);
 
-  ScrollOut({
-    once: true,
-    targets: "[data-scroll]",
-  });
-
   return (
-    <main className="main flex-row lg:px-[13%]">
-      <section className="pb-16 min-h-[100vh]">
-        <div data-scroll className="px-10 text-3xl font-bold">
+    <main className="main flex-col xl:px-[10%]">
+      <section className="pb-16 min-h-[100vh] ">
+        <div
+          data-scroll
+          className="text-center sm:text-left text-3xl font-bold"
+        >
           <h1>가게를 공유하여</h1>
-          <h1 className="ml-20 mt-5">함께 성장하세요</h1>
+          <h1 className=" sm:ml-20 mt-5">함께 성장하세요</h1>
         </div>
         <div className="mt-10 relative flex justify-center items-center">
           <h1 className="absolute top-[calc(50%-100px)] left-[calc(50%-160px)] text-5xl font-bold text-my-green">
@@ -47,21 +71,21 @@ export default function MainPage() {
         </div>
         <div className="mt-12 px-10 flex flex-col items-end font-bold text-3xl ">
           <h1 className="mr-20">
-            <span className="font-extrabold text-5xl">
+            <span className="font-extrabold text-[26px] sm:text-5xl">
               <TypeIt
                 options={{
                   spped: 100,
                   waitUntilVisible: true,
-                  startDelay: 2500,
+                  startDelay: 2000,
                   cursor: false,
                 }}
               >
                 바로 여기
               </TypeIt>
             </span>
-            <span className="">에서</span>
+            <span className="whitespace-nowrap sm:ml-0">에서</span>
           </h1>
-          <h1 className="mt-5">시작하는 새로운 사업</h1>
+          <h1 className="mt-5 whitespace-nowrap">시작하는 새로운 사업</h1>
         </div>
       </section>
       <section className="pb-16 min-h-[100vh]">
@@ -72,7 +96,7 @@ export default function MainPage() {
               공유공간을 대여해보세요!
             </h1>
           </div>
-          <ul data-scroll className="mt-60 flex justify-between ul-cards">
+          <ul className="mt-60 flex ul-cards justify-between w-full">
             {data &&
               data.map((item) => (
                 <MainCard
@@ -83,6 +107,8 @@ export default function MainPage() {
                   title={item.title}
                   subTitle={item.subTitle}
                   price={item.price}
+                  size={"border-[0.01px]"}
+                  dataScroll={true}
                 />
               ))}
           </ul>
@@ -92,11 +118,13 @@ export default function MainPage() {
         <div>
           <div className="px-5">
             <div className="main-dialog flex justify-start">
-              <img
-                data-scroll
-                className="w-[580px] lg:w-[680px]"
-                src={mainImg.interview1}
-              />
+              <div>
+                <img
+                  data-scroll
+                  className="w-[580px] lg:w-[680px]"
+                  src={mainImg.interview1}
+                />
+              </div>
             </div>
             <div className="main-dialog flex justify-end my-10">
               <img
@@ -115,9 +143,9 @@ export default function MainPage() {
           </div>
         </div>
       </section>
-      <section className="py-16">
+      <section className="py-32">
         <div className="ml-10 flex items-end">
-          <img className="w-[300px]" src={mainImg.provider} />
+          <img data-scroll className="w-[300px]" src={mainImg.provider} />
           <h1 className="ml-5 mb-10 text-3xl font-semiboldtext-my-green">
             <h1 className="mb-1">사업자는</h1>
             <span className="font-extrabold">바로 여기</span>
@@ -125,31 +153,31 @@ export default function MainPage() {
           </h1>
         </div>
         <div className="flex items-center justify-center relative bottom-10 w-[90%] lg:w-[70%] h-[125px] bg-my-green text-white text-center rounded-[40px] shadow-lg">
-          <p data-scroll className="text-lg font-light tracking-wide">
+          <p className="text-lg font-light tracking-wide">
             공간을 공유해 주면서 임대료의 부담을 덜 수 있습니다!
           </p>
         </div>
         <div className="flex items-center justify-center relative bottom-4 w-[90%] lg:w-[70%] h-[125px] bg-my-green text-white text-center rounded-[40px] shadow-lg">
-          <p data-scroll className="text-lg font-light tracking-wide">
+          <p className="text-lg font-light tracking-wide">
             휴무일, 영업 외의 시간에 사용되지 않는 내 사업공간을 활용해 보세요!
           </p>
         </div>
         <div className="mt-24 mr-10 flex items-end justify-end">
-          <img className="w-[300px]" src={mainImg.user} />
           <h1 className="ml-5 mb-10 text-3xl font-semiboldtext-my-deep-red">
             <h1 className="mb-1">이용자는</h1>
             <span className="font-extrabold">바로 여기</span>
             <span>에서</span>
           </h1>
+          <img data-scroll className="w-[300px]" src={mainImg.user} />
         </div>
         <div className="flex flex-col items-end">
           <div className="flex items-center justify-center relative bottom-10 w-[90%] lg:w-[70%] h-[125px] bg-my-deep-red text-white text-center rounded-[40px] shadow-lg">
-            <p data-scroll className="text-lg font-light tracking-wide">
+            <p className="text-lg font-light tracking-wide">
               창업 전 내 사업 아이템의 반응을 확인해 보세요!
             </p>
           </div>
           <div className="flex items-center justify-center relative bottom-4 w-[90%] lg:w-[70%] h-[125px] bg-my-deep-red text-white text-center rounded-[40px] shadow-lg">
-            <p data-scroll className="text-lg font-light tracking-wide">
+            <p className="text-lg font-light tracking-wide">
               창업 준비중 부담스러운 임대료를 전부 지불하지 않고
               <br />
               창업 준비를 해보세요!
@@ -159,10 +187,12 @@ export default function MainPage() {
       </section>
       <section className="py-32">
         <div className="mb-10 ">
-          <h1 className="mb-32 text-2xl font-semibold text-center tracking-wide">
+          <h1 className="mb-32 text-2xl font-semibold text-center tracking-wide flex justify-center items-center">
             <span className="font-extrabold">지속 가능한 미래</span>
             <span className="">를 위해서</span>
-            <span className="ml-2 text-[28px] text-[#11434A]">바로 여기</span>
+            <span className="ml-4 font-extrabold text-4xl text-[#11434A]">
+              바로 여기
+            </span>
           </h1>
           <div className="flex flex-col">
             <img src={mainImg.environment} />
@@ -287,9 +317,11 @@ export default function MainPage() {
             </h2>
             <h2 className="ml-28 mt-6">같이 사업해보세요!</h2>
           </h1>
-          <div className="last-main-btn my-20 px-12 py-6 border-2 rounded-xl shadow-md text-2xl font-bold cursor-pointer">
-            <Link to="/place/list">공유 공간 찾기</Link>
-          </div>
+          <Link to="/place/list">
+            <div className="last-main-btn my-20 px-12 py-6 border-2 rounded-xl shadow-md text-2xl font-bold cursor-pointer">
+              <span>공유 공간 찾기</span>
+            </div>
+          </Link>
         </div>
       </section>
     </main>

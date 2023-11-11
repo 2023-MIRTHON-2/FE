@@ -15,7 +15,7 @@ export default function Header({
 }: HeaderProps) {
   return (
     <header
-      className="w-1/1 py-1 px-20 lg:px-60 flex justify-between items-center shadow-md bg-white"
+      className="w-1/1 py-1 px-20 xl:px-60 flex justify-between items-center shadow-md bg-white  "
       style={{ height: "var(--height-header)" }}
     >
       <div>

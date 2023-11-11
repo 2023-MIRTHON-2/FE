@@ -157,12 +157,14 @@ const CreatePlacePage = () => {
               onClickEvent={(list) => {
                 setFilterBusinessList(list);
               }}
+              isMultiSelect={false}
             />
             <FilteringSection
               type={"location"}
               onClickEvent={(list) => {
                 setFilterLocationList(list);
               }}
+              isMultiSelect={false}
             />
           </div>
 

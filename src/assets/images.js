@@ -33,4 +33,12 @@ const DividerImg = {
   red: "/images/divider-red.png",
   vertical: "/images/vertical-divider.png",
 };
-export { logo, userImg, mainImg, JoinImg, DividerImg };
+
+const Icon = {
+  box: "/images/icon/box.png",
+  food: "/images/icon/food.png",
+  hammer: "/images/icon/hammer.png",
+  wine: "/images/icon/wine.png",
+};
+
+export { logo, userImg, mainImg, JoinImg, DividerImg, Icon };

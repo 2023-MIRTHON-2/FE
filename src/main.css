@@ -67,17 +67,19 @@ img {
   transition-delay: 0.5s;
 }
 
-.ul-cards[data-scroll] {
+.main-card[data-scroll]:first-child {
   transition-delay: 0.8s;
 }
-.ul-cards[data-scroll="in"] {
-  transform: translateY(0rem) scale(1);
+
+.main-card[data-scroll]:nth-child(2) {
+  transition-delay: 1s;
 }
-.ul-cards:first-child {
-  background-color: red;
+.main-card[data-scroll]:nth-child(3) {
+  transition-delay: 1.2s;
 }
+
 .esg[data-scroll] {
-  transition-delay: 0.3s;
+  transition-delay: 0.2s;
 }
 
 .main-dialog {
@@ -90,10 +92,6 @@ img {
 .last-main-btn:hover {
   border: 1px solid rgb(17, 67, 74);
   transform: translateY(-0.5rem) scale(1.1);
-}
-.card-skew {
-  perspective: 100px;
-  transition: 1s;
 }
 
 .main .card-skew:first-child {
@@ -116,34 +114,23 @@ img {
   font-size: 12px;
 }
 
-@media screen and (max-width: 1080px) {
-  .main .card-skew:first-child {
-    transform: rotateZ(-10deg) rotateX(-20deg) translateX(-30px)
-      translateY(-10px);
-  }
-
-  .main .card-skew:nth-child(2) {
-    transform: rotateX(-10deg) translateY(-80px);
-  }
-
-  .main .card-skew:last-child {
-    transform: rotateZ(10deg) rotateX(-20deg) translateX(30px) translateY(-10px);
-  }
+.main .card-skew:first-child {
+  transform: rotateZ(-10deg) rotateX(-20deg) translateX(-30px) translateY(-10px);
 }
-@media screen and (min-width: 1080px) {
-  .main .card-skew:first-child {
-    transform: rotateZ(-10deg) rotateX(-20deg) translateY(-10px);
-  }
 
-  .main .card-skew:nth-child(2) {
-    transform: rotateX(-10deg) translateY(-80px);
-    box-shadow: 2px 33px 64px -5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 2px 33px 64px -5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 2px 33px 64px -5px rgba(0, 0, 0, 0.75);
-  }
+.main .card-skew:nth-child(2) {
+  transform: rotateX(-10deg) translateY(-80px);
+}
 
-  .main .card-skew:last-child {
-    transform: rotateZ(10deg) rotateX(-20deg) translateY(-10px);
+.main .card-skew:last-child {
+  transform: rotateZ(10deg) rotateX(-20deg) translateX(30px) translateY(-10px);
+}
+
+@media screen and (max-width: 400px) {
+  .header-top {
+    padding: 0 30px;
+  }
+  .main {
   }
 }
 
