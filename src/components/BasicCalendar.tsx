@@ -11,8 +11,8 @@ interface props {
 
 const BasicCalendar = ({ disabledDates }: props) => {
   const disabledDateList = [];
-  let tempDate = disabledDates[1];
-  while (tempDate < disabledDates[0]) {
+  let tempDate = Math.min(...disabledDates);
+  while (tempDate < Math.max(...disabledDates)) {
     disabledDateList.push(dayjs.unix(tempDate).toDate());
     tempDate += 86400;
   }
