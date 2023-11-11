@@ -79,6 +79,7 @@ const PlaceListPage = () => {
               src={`${BASCI_URL.slice(0, -1)}${place.placeImageUrl}`}
               isBasicMode={true}
               size=""
+              dataScroll=""
             ></MainCard>
           </div>
         ))}
