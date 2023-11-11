@@ -11,7 +11,6 @@ export default function MainCard({
   isBasicMode = false,
   size,
   dataScroll,
-  onClickEvent,
 }) {
   return (
     <li
