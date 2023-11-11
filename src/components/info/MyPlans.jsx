@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MyPlans({
   id,
@@ -8,8 +9,12 @@ export default function MyPlans({
   endDate,
   ceoId,
 }) {
+  const navigate = useNavigate();
   return (
-    <div className="px-10 py-6 border-2 shadow-md rounded-3xl">
+    <div
+      className="px-10 py-6 border-2 shadow-md rounded-3xl cursor-pointer"
+      onClick={() => navigate(`/booking/detail/${id}`)}
+    >
       <div className="flex justify-between items-center">
         <h1>
           {startDate} ~ {endDate}

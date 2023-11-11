@@ -27,7 +27,6 @@ export default function MyPage() {
     fetchUserInfo();
   }, []);
 
-  console.log(user);
   const userLabel = {
     realname: "이름",
     phone: "전화번호",
