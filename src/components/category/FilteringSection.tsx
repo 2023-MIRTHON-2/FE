@@ -3,12 +3,21 @@ import ChipWrap from "./ChipWrap";
 interface props {
   type: "business" | "location";
   onClickEvent: (pickedList: string[]) => void;
+  isMultiSelect?: boolean;
 }
 
-const businessList = ["전체", "요식업", "주점", "제조업", "도소매"];
-const locationList = ["전체", "성수", "홍대", "강남", "종로", "신촌"];
+const FilteringSection = ({
+  type,
+  onClickEvent,
+  isMultiSelect = true,
+}: props) => {
+  const businessList = isMultiSelect
+    ? ["전체", "요식업", "주점", "제조업", "도소매"]
+    : ["요식업", "주점", "제조업", "도소매"];
+  const locationList = isMultiSelect
+    ? ["전체", "성수", "홍대", "강남", "종로", "신촌"]
+    : ["성수", "홍대", "강남", "종로", "신촌"];
 
-const FilteringSection = ({ type, onClickEvent }: props) => {
   const filteringList = type === "business" ? businessList : locationList;
   return (
     <section className={`flex flex-col items-center`}>
@@ -24,6 +33,7 @@ const FilteringSection = ({ type, onClickEvent }: props) => {
           filteringList={filteringList}
           type={type}
           pickEvent={onClickEvent}
+          isMultiSelect={isMultiSelect}
         ></ChipWrap>
       </div>
     </section>
