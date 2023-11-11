@@ -42,13 +42,9 @@ export const FormTextareaStyle = styled(InputStyle)<{
   }
 `;
 
-export const FormDatePickerCalendarStyle = styled.div`
+export const CalendarStyle = styled.div`
   & {
     background-color: white;
-    width: 100%;
-    position: absolute;
-    top: calc(100% + 0.25rem);
-    z-index: 1;
 
     .rdrDefinedRangesWrapper,
     .rdrDateDisplayWrapper {
@@ -70,5 +66,22 @@ export const FormDatePickerCalendarStyle = styled.div`
     .rdrMonthsHorizontal > .rdrMonth {
       width: 100%;
     }
+  }
+`;
+
+export const BasicCalendarStyle = styled(CalendarStyle)`
+  & {
+    .rdrDays {
+      pointer-events: none;
+    }
+  }
+`;
+
+export const FormDatePickerCalendarStyle = styled(CalendarStyle)`
+  & {
+    width: 100%;
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    z-index: 1;
   }
 `;

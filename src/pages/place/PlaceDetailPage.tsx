@@ -126,10 +126,16 @@ const PlaceDetailPage = () => {
           <section
             className={`flex flex-col justify-center items-center px-3 py-5`}
           >
-            <div className={`flex w-full font-semibold text-3xl text-my-green`}>
+            <div
+              className={`flex w-full font-semibold text-3xl text-my-green mb-5`}
+            >
               계약 가능한 일정
             </div>
-            <BasicCalendar disabledDates={[]}></BasicCalendar>
+            <BasicCalendar
+              disabledDates={
+                place.impossibleDate_list ? place.impossibleDate_list : []
+              }
+            ></BasicCalendar>
           </section>
         </>
       )}
