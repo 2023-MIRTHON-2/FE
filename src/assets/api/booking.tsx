@@ -1,8 +1,10 @@
 import { basicAPI } from "./core";
 import { getAccessTokenFromLocalStorage } from "./token";
 const token = getAccessTokenFromLocalStorage();
+
 const config = {
   headers: {
+    "Content-Type": "application/json",
     Authorization: token,
   },
 };

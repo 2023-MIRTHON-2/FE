@@ -11,7 +11,7 @@ export const InputStyle = styled.div`
     background-color: white;
   }
   > div {
-    min-width: 20rem;
+    min-width: 25rem;
   }
   > input {
     min-width: 5rem;
@@ -32,23 +32,22 @@ export const FormTextareaStyle = styled(InputStyle)<{
   minWidth: string | null;
 }>`
   width: 100%;
+  height: 100%;
+
   > div,
   > input {
-    height: 15rem;
+    min-height: 15rem;
   }
   > div {
     min-width: ${(props) => (props.minWidth ? props.minWidth : "30rem")};
     width: 100%;
+    height: 100%;
   }
 `;
 
-export const FormDatePickerCalendarStyle = styled.div`
+export const CalendarStyle = styled.div`
   & {
     background-color: white;
-    width: 100%;
-    position: absolute;
-    top: calc(100% + 0.25rem);
-    z-index: 1;
 
     .rdrDefinedRangesWrapper,
     .rdrDateDisplayWrapper {
@@ -70,5 +69,22 @@ export const FormDatePickerCalendarStyle = styled.div`
     .rdrMonthsHorizontal > .rdrMonth {
       width: 100%;
     }
+  }
+`;
+
+export const BasicCalendarStyle = styled(CalendarStyle)`
+  & {
+    .rdrDays {
+      pointer-events: none;
+    }
+  }
+`;
+
+export const FormDatePickerCalendarStyle = styled(CalendarStyle)`
+  & {
+    width: 100%;
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    z-index: 1;
   }
 `;

@@ -38,7 +38,7 @@ const FormInputPhoto = ({ name, required, saveImageEvent }: props) => {
         const { ref: fieldRef, onChange: fieldOnchange, ...imgField } = field;
         return (
           <label
-            className={`rounded-xl cursor-pointer flex justify-center items-center max-w-[12.5rem] max-h-[12.5rem] ${
+            className={`rounded-xl cursor-pointer flex justify-center items-center w-[12.5rem] h-[12.5rem] ${
               imgFile ? "" : "bg-my-light-green"
             }`}
             htmlFor={`${name}-image`}

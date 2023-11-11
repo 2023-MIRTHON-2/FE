@@ -41,7 +41,10 @@ const PlaceDetailPage = () => {
             </div>
             <div className={`flex gap-2 items-center`}>
               <CommunicationIcon />
-              <div className={`font-bold text-xl`}>{place.placeName}</div>
+              <div className={`font-bold text-xl`}>{`${place.phone.slice(
+                0,
+                3
+              )}-${place.phone.slice(3, 7)}-${place.phone.slice(7, 11)}`}</div>
             </div>
           </section>
           <section className={`flex gap-9 py-[4rem] px-7 basic-border-bottom`}>
@@ -126,10 +129,16 @@ const PlaceDetailPage = () => {
           <section
             className={`flex flex-col justify-center items-center px-3 py-5`}
           >
-            <div className={`flex w-full font-semibold text-3xl text-my-green`}>
-              계약 가능한 일정
+            <div
+              className={`flex w-full font-semibold text-3xl text-my-green mb-5`}
+            >
+              계약 불가능한 일정
             </div>
-            <BasicCalendar disabledDates={[]}></BasicCalendar>
+            <BasicCalendar
+              disabledDates={
+                place.impossibleDate_list ? place.impossibleDate_list : []
+              }
+            ></BasicCalendar>
           </section>
         </>
       )}

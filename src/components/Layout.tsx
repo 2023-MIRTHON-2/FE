@@ -1,10 +1,16 @@
 import Header from "./Header";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { getUserInfoFromLocalStorage } from "../assets/api/userInfo";
 
 const Layout = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   interface UserInfo {
     id: number;

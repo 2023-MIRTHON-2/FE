@@ -64,7 +64,7 @@ const PlaceListPage = () => {
       </section>
       <section className={`w-full py-[4rem] grid grid-cols-3`}>
         {placeList.map((place) => (
-          <div
+          <ul
             className={`px-4 pb-10`}
             onClick={() => navigate(`/place/${place.id}`)}
             key={place.id}
@@ -81,7 +81,7 @@ const PlaceListPage = () => {
               size=""
               dataScroll=""
             ></MainCard>
-          </div>
+          </ul>
         ))}
       </section>
     </article>
