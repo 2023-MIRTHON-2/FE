@@ -10,10 +10,17 @@ interface props {
 
 const FormInputPhoto = ({ name, required, saveImageEvent }: props) => {
   const [imgFile, setImgFile] = useState<string | null>(null);
-  const imgRef = useRef();
+  const imgRef = useRef(null);
 
   const saveImgFile = () => {
-    const file = imgRef && imgRef.current ? imgRef.current.files[0] : null;
+    let file;
+
+    if (imgRef && imgRef.current && imgRef) {
+      const ref = imgRef.current as any;
+      file = ref.files[0];
+    } else {
+      file = null;
+    }
     saveImageEvent(file);
     if (file) {
       const reader = new FileReader();

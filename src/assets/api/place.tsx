@@ -1,4 +1,7 @@
 import { basicAPI } from "./core";
+import { getAccessTokenFromLocalStorage } from "./token";
+
+const token = getAccessTokenFromLocalStorage();
 
 export const getPlaceListApi = async (business: string, location: string) => {
   let url = `/places/${business}/${location}/`;
@@ -36,7 +39,7 @@ export const createPlaceApi = async (reqBody: any) => {
   let url = `places/create/`;
   const config = {
     headers: {
-      // Authorization: ...,  // 토큰 넣어주기
+      Authorization: token, // 토큰 넣어주기
       "Content-Type": "multipart/form-data", // 데이터 형식 지정
     },
   };
