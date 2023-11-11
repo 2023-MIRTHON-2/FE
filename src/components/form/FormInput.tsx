@@ -36,7 +36,7 @@ const FormInput = ({
             {type === "file" && (
               <div className={`flex justify-between`}>
                 <input
-                  className="upload-name"
+                  className={`upload-name flex-grow`}
                   value={field.value}
                   placeholder={placeholder}
                 />

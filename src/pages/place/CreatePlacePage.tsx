@@ -185,7 +185,7 @@ const CreatePlacePage = () => {
             </div>
 
             <div className={`flex gap-8`}>
-              <div className={`grid grid-cols-2 flex-grow flex-wrap gap-4`}>
+              <div className={`grid grid-cols-2 flex-wrap gap-4`}>
                 {[0, 1, 2, 3].map((picIndex) => (
                   <FormInputPhoto
                     key={picIndex}

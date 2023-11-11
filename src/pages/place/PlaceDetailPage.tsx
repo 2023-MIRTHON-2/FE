@@ -132,7 +132,7 @@ const PlaceDetailPage = () => {
             <div
               className={`flex w-full font-semibold text-3xl text-my-green mb-5`}
             >
-              계약 가능한 일정
+              계약 불가능한 일정
             </div>
             <BasicCalendar
               disabledDates={
